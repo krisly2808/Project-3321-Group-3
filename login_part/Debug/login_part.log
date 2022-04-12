@@ -1,0 +1,4 @@
+﻿  sign_up_part.cpp
+C:\Users\frank\source\repos\login_part\sign_up_part.cpp(14,2): error C3861: 'signUp': identifier not found
+  signup.cpp
+  Generating Code...
