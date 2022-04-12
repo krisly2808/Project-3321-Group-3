@@ -16,7 +16,10 @@ int main()
 {
     char rerun;
     int option;
+    //Do-while loop to repeat the program-Kris Ly
     do {
+        cin.clear();
+        cin.ignore();
         system("CLS");
         printMenu();
         cin >> option;
