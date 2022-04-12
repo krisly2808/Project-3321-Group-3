@@ -1,8 +1,8 @@
 #include "mainMenu.h"
 
-# include <iostream>
-using namespace std;
-
+//Function Definitions
+// 
+//Function to print the main menu for all users to input choice-Kris Ly
 void printMenu() {
 	cout << "Please select you option from the list below:\n ";
 	cout << "\t1. Login.\n ";
@@ -12,8 +12,12 @@ void printMenu() {
 	cout << "\t5. Exit Program.\n ";
 }
 
+//Function to print detail menu based on input-Kris Ly
+void printDetailMenu(int);
 void printDetailMenu(int option) {
 	system("CLS");
+	cin.clear();
+	cin.ignore();
 	switch (option)
 	{
 	case 1:
@@ -23,7 +27,10 @@ void printDetailMenu(int option) {
 		cout << "Printing the sign-up menu\n";
 		break;
 	case 3:
-		cout << "Printing the Guest menu\n";
+		int choice;
+		printGuestMenu();
+		cin >> choice;
+		printDetailGuestMenu(choice);
 		break;
 	case 4:
 		cout << "Printing the Forgot-passwords menu\n";

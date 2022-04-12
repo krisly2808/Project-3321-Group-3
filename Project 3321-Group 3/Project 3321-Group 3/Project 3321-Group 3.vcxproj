@@ -141,9 +141,15 @@
   <ItemGroup>
     <ClCompile Include="mainMenu.cpp" />
     <ClCompile Include="Project 3321-Group 3.cpp" />
+    <ClCompile Include="guestMenu.cpp" />
+    <ClCompile Include="products.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cartMenu.h" />
+    <ClInclude Include="guestMenu.h" />
     <ClInclude Include="mainMenu.h" />
+    <ClInclude Include="products.h" />
+    <ClInclude Include="reviews.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
