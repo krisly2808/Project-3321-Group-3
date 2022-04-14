@@ -3,7 +3,7 @@
 //Function Definitions
 // 
 //Function to print the main menu for all users to input choice-Kris Ly
-void printMenu() {
+void printMainMenu() {
 	cout << "Please select you option from the list below:\n ";
 	cout << "\t1. Login.\n ";
 	cout << "\t2. Sign-up as User.\n ";
@@ -13,8 +13,7 @@ void printMenu() {
 }
 
 //Function to print detail menu based on input-Kris Ly
-void printDetailMenu(int);
-void printDetailMenu(int option) {
+void printDetailMainMenu(int option) {
 	system("CLS");
 	cin.clear();
 	cin.ignore();
