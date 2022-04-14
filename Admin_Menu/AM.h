@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "ordersMenu.h"
+#include "artMenu.h"
 
 using namespace std;
 
