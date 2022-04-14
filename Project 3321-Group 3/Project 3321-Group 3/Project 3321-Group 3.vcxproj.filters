@@ -27,6 +27,9 @@
     <ClCompile Include="products.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cartMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainMenu.h">

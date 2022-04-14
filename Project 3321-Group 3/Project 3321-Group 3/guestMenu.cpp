@@ -20,12 +20,23 @@ void printDetailGuestMenu(int option) {
 		viewProducts();
 		break;
 	case 2:
-		//printCartMenu();
+		int choice2;
+		printCartMenu();
+		cin >> choice2;
+		printDetailCartMenu(choice2);
 		break;
 	case 3:
 		//printReviews();
+		int choice3;
+		printMainMenu();
+		cin >> choice3;
+		printDetailMainMenu(choice3);
 		break;
 	case 4:
+		int choice4;
+		printMainMenu();
+		cin >> choice4;
+		printDetailMainMenu(choice4);
 		break;
 	default:
 		cout << "INVALID CHOICE. Please only input option from 1 to 4.Thank you\n";

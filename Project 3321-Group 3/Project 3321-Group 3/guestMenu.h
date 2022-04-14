@@ -1,6 +1,7 @@
 #pragma once
-//#include "cartMenu.h"
+#include "cartMenu.h"
 #include "products.h"
+#include "mainMenu.h"
 //#include "reviews.h"
 # include <iostream>
 using namespace std;

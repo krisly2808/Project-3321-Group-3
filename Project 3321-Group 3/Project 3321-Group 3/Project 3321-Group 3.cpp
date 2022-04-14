@@ -21,12 +21,18 @@ int main()
         cin.clear();
         cin.ignore();
         system("CLS");
-        printMenu();
+        //Print out the main menu prompt-Kris Ly
+        printMainMenu();
         cin >> option;
-        printDetailMenu(option);
 
+        //Print detail menu based on input-Kris Ly
+        printDetailMainMenu(option);
+
+        //Option to re-run the program
+        cin.clear();
         cout << "\nPLease input y/Y to re-run the program or press any key to quit.\n";
         cin >> rerun;
+
     } while (rerun == 'y' || rerun == 'Y');
 }
 
