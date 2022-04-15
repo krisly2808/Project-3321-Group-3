@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cartMenu.cpp" />
     <ClCompile Include="mainMenu.cpp" />
     <ClCompile Include="Project 3321-Group 3.cpp" />
     <ClCompile Include="guestMenu.cpp" />

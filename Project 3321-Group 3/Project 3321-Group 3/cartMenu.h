@@ -1,3 +1,27 @@
 #pragma once
-//void printCartMenu();
+#include "products.h"
+#include "guestMenu.h"
 
+//Function related to Cart menu
+//Functions declaration
+
+//Function to print cart menu-Kris Ly
+void printCartMenu();
+
+//Function to print detail menu based on input-Kris Ly
+void printDetailCartMenu(int);
+
+//Function to display items in cart-Kris Ly
+void viewCart();
+
+//Function to modify items in cart-Kris Ly
+void modifyCart();
+
+//Function to update quantity of item in cart-Kris Ly
+void updateQuantity();
+
+//Function to delete items in cart-Kris Ly
+void deleteItem();
+
+//Function to add items in cart-Kris Ly
+void addItem();
