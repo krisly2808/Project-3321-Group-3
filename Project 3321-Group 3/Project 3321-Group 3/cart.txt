@@ -1,5 +1,5 @@
-DS01	TshirtXS	5
-DS02	TshirtS	4
+DS01	TshirtXS	3
 DS04	TShirtL	4
 DS05	TShirtXL	1
 DS03	TshirtM	5
+DS02	TshirtS	3
