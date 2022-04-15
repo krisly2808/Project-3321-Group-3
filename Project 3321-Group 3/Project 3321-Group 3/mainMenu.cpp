@@ -1,4 +1,7 @@
 #include "mainMenu.h"
+#include "guestMenu.h"
+# include <iostream>
+using namespace std;
 
 //Function Definitions
 // 
@@ -23,7 +26,7 @@ void printDetailMainMenu(int option) {
 		cout << "Printing the login menu\n";
 		break;
 	case 2:
-		cout << "Printing the sign-up menu\n";
+		signUp();
 		break;
 	case 3:
 		int choice;
