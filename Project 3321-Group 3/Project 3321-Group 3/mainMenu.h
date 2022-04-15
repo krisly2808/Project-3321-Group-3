@@ -1,7 +1,5 @@
 #pragma once
-# include <iostream>
-#include "guestMenu.h"
-using namespace std;
+#include "signup.h"
 
 //Function Declarations
 //Function to print the main menu for all users to input choice-Kris Ly

@@ -27,6 +27,9 @@
     <ClCompile Include="products.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="signup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainMenu.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="reviews.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="signup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
