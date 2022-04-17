@@ -31,7 +31,7 @@ void forgotPassword(string phoneNumber) //this new way of getting the password i
 	cout << "\n\nWe all tend to forget our password from time to time, and that's okay!\n";
 	cout << "Please enter your phone number: ";
 	string phoneNo;
-
+	
 	if (phoneNo == PHONENUMBER)
 	{
 		cout << "Enter your new password: ";
@@ -41,7 +41,7 @@ void forgotPassword(string phoneNumber) //this new way of getting the password i
 		cin >> password;
 		cout << "Congrats! Your new password has been saved.\n";
 	}
-
+	
 
 
 
@@ -115,7 +115,7 @@ void getPassword()
 
 	if (password == cPassword)
 	{
-
+		
 		cout << "\nWelcome " << userName << "!\n" << "Your account has been created. Thank you! \n\n";
 		password == PASSWORD;
 	}
@@ -151,7 +151,7 @@ void getInfo()
 	cout << "Enter your last name: ";
 	string lName;
 	cin >> lName;
-
+	
 
 	while (lName.size() > NUM_LENGTH) // may take it off 
 
@@ -162,7 +162,7 @@ void getInfo()
 		cin >> lName;
 
 	}
-
+	
 	cin.ignore();
 	cout << "Enter your phone number: ";
 	string phoneNumber;
@@ -200,5 +200,6 @@ void getInfo()
 		getPassword();
 	}
 	else getPassword();
+	
 
-
+}
