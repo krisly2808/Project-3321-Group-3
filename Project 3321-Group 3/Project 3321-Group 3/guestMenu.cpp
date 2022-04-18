@@ -14,6 +14,7 @@ void printGuestMenu() {
 //Function to print menu for Guest-Kris Ly
 void printDetailGuestMenu(int option) {
 	system("CLS");
+	cin.clear();
 	cin.ignore();
 	switch (option)
 	{case 1:

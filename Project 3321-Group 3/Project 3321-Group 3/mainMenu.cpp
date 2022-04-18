@@ -1,5 +1,6 @@
 #include "mainMenu.h"
 #include "guestMenu.h"
+#include "signup.h"
 # include <iostream>
 using namespace std;
 
