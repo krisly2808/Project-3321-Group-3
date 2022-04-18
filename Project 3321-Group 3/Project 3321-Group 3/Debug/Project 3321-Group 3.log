@@ -1,11 +1,11 @@
-<<<<<<< HEAD
-﻿  mainMenu.cpp
-=======
-﻿  Project 3321-Group 3.cpp
-  cartMenu.cpp
-  guestMenu.cpp
+﻿  cartMenu.cpp
   mainMenu.cpp
+<<<<<<< HEAD
+=======
+  Project 3321-Group 3.cpp
+  guestMenu.cpp
+  products.cpp
+  signup.cpp
+>>>>>>> 3c1fb864a73313651eb04a9c3f3247a0557c631b
   Generating Code...
-  LINK : C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe not found or not built by the last incremental link; performing full link
->>>>>>> origin/main
-  Project 3321-Group 3.vcxproj -> C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe
+  Project 3321-Group 3.vcxproj -> C:\Users\Frank\OneDrive\Desktop\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe
