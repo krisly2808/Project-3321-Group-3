@@ -27,7 +27,11 @@
     <ClCompile Include="products.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="signup.cpp">
+=======
     <ClCompile Include="cartMenu.cpp">
+>>>>>>> origin/main
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -45,6 +49,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="reviews.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="signup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
