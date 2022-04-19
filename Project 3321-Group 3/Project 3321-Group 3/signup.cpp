@@ -85,13 +85,13 @@ void changePersonalInfo(string fName, string lName, string phoneNumber)
 
 
 		break;
-	case 2:	cout << "Enter the new desired last name: ";
+	case 2: cout << "Enter the new desired last name: ";
 		cin >> lName;
 		cout << "\nGreat, " << fName << "! Let's now move forward on getting the rest of your information.\n";
 		getPassword();
 
 		break;
-	case 3:	cout << "Enter the new desired phone number: ";
+	case 3: cout << "Enter the new desired phone number: ";
 		cin >> phoneNumber;
 		cout << "\nGreat, " << fName << "! Let's now move forward on getting the rest of your information.\n";
 		getPassword();
@@ -113,13 +113,13 @@ void getPassword()
 	cin.ignore();
 
 	cout << "Please confirm your password: ";
-	string cPassword; // confirmed password variable 
+	string cPassword; // confirmed password variable
 	cin >> cPassword;
 	cin.ignore();
 
 	if (password == cPassword)
 	{
-		
+
 		cout << "\nWelcome " << userName << "!\n" << "Your account has been created. Thank you! \n\n";
 		password == PASSWORD;
 	}
@@ -145,7 +145,7 @@ void getInfo()
 	string fName;
 	cin >> fName;
 
-	while (fName.size() > NUM_LENGTH) // may take it off 
+	while (fName.size() > NUM_LENGTH) // may take it off
 
 	{
 		cout << "Please re-enter your first name: ";
@@ -155,9 +155,9 @@ void getInfo()
 	cout << "Enter your last name: ";
 	string lName;
 	cin >> lName;
-	
 
-	while (lName.size() > NUM_LENGTH) // may take it off 
+
+	while (lName.size() > NUM_LENGTH) // may take it off
 
 	{
 		cin.clear();
@@ -166,13 +166,13 @@ void getInfo()
 		cin >> lName;
 
 	}
-	
+
 	cin.ignore();
 	cout << "Enter your phone number: ";
 	string phoneNumber;
 	cin >> phoneNumber;
 	phoneNumber == PHONENUMBER;
-	while (phoneNumber.size() > NUM_LENGTH) // may take it off 
+	while (phoneNumber.size() > NUM_LENGTH) // may take it off
 
 	{
 		cin.clear();
@@ -185,9 +185,9 @@ void getInfo()
 	cout << "Enter your desired permanent username: ";
 	string username;
 	cin >> userName;
-	//thinking of having a restriction of max characters in a username 
+	//thinking of having a restriction of max characters in a username
 
-	username = userName; // this is going to be a valauble way of using certain code such as changing passwords... 
+	username = userName; // this is going to be a valauble way of using certain code such as changing passwords...
 
 
 	cout << "\nBefore we ask for your password, would you like to change any of the recent information?(y/n or any other character)\n";
@@ -204,14 +204,14 @@ void getInfo()
 		getPassword();
 	}
 	else getPassword();
-	
-	
+
+
 
 	fstream myFile;
 	myFile.open("user.txt", ios::out);
 	if (myFile.is_open()) {
-			myFile << "   " << fName << "\t" << setw(20) << lName << "\t\t" << phoneNumber << "\t\t" << username;
-		
+		myFile << fName << "\n" << lName << "\n" << phoneNumber << "\n" << username;
+
 		myFile.close();
 	}
 
@@ -219,3 +219,4 @@ void getInfo()
 
 
 }
+
