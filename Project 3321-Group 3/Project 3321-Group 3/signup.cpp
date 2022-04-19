@@ -210,7 +210,7 @@ void getInfo()
 	fstream myFile;
 	myFile.open("user.txt", ios::out);
 	if (myFile.is_open()) {
-			myFile << "   " << fName << "\t" << setw(20) << lName << "\t\t" << phoneNumber << "\t\t" << username;
+			myFile << fName << "\n" << setw(20) << lName << "\n" << phoneNumber << "\n" << username;
 		
 		myFile.close();
 	}
