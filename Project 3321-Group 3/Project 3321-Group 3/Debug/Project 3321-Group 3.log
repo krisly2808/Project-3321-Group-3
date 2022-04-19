@@ -1,2 +1,4 @@
-﻿  LINK : C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe not found or not built by the last incremental link; performing full link
-  Project 3321-Group 3.vcxproj -> C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe
+﻿  signup.cpp
+C:\Users\frank\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(124,12): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\frank\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(174,14): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Project 3321-Group 3.vcxproj -> C:\Users\frank\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe
