@@ -2,6 +2,8 @@
 #include "guestMenu.h"
 #include "signup.h"
 # include <iostream>
+
+
 using namespace std;
 
 //Function Definitions
@@ -36,7 +38,7 @@ void printDetailMainMenu(int option) {
 		printDetailGuestMenu(choice);
 		break;
 	case 4:
-		cout << "Printing the Forgot-passwords menu\n";
+		forgotPassword();
 		break;
 	case 5:
 		exit(0);

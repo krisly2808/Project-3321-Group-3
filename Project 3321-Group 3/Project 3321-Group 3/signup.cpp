@@ -4,9 +4,10 @@
 #include<iomanip>
 #include <ctime>
 #include <string>
+#include <fstream>
 using namespace std;
 
-void forgotPassword(string);
+void forgotPassword();
 void getInfo();
 void changePersonalInfo(string fName, string lName, string phoneNumber);
 void getPassword();
@@ -24,15 +25,16 @@ void signUp()
 
 }
 
-void forgotPassword(string phoneNumber) //this new way of getting the password is based on constants instead of storing it in an array ... 
-//im thinking of getting creating an array to hold the information (all string based) but get all of that information into one function to separate it if needed to
+void forgotPassword()
 
 {
 
 	cout << "\n\nWe all tend to forget our password from time to time, and that's okay!\n";
 	cout << "Please enter your phone number: ";
 	string phoneNo;
-	
+	cin >> phoneNo;
+
+
 	if (phoneNo == PHONENUMBER)
 	{
 		cout << "Enter your new password: ";
@@ -42,8 +44,9 @@ void forgotPassword(string phoneNumber) //this new way of getting the password i
 		cin >> password;
 		cout << "Congrats! Your new password has been saved.\n";
 	}
-	
 
+	else
+		cout << "Invalid phone number.";
 
 
 }
@@ -202,5 +205,17 @@ void getInfo()
 	}
 	else getPassword();
 	
+	
+
+	fstream myFile;
+	myFile.open("user.txt", ios::out);
+	if (myFile.is_open()) {
+			myFile << "   " << fName << "\t" << setw(20) << lName << "\t\t" << phoneNumber << "\t\t" << username;
+		
+		myFile.close();
+	}
+
+
+
 
 }
