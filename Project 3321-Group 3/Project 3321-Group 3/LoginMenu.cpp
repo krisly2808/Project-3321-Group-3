@@ -1,10 +1,5 @@
 #include "AM.h"
-#include <iostream>
-#include<iomanip>
-#include <ctime>
-#include <string>
-#include <fstream>
-using namespace std;
+#include "LoginMenu.h"
 
 
 void getLogin();
