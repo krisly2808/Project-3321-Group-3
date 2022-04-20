@@ -12,36 +12,28 @@ void getInfo();
 void changePersonalInfo(string fName, string lName, string phoneNumber);
 void getPassword();
 void passPassword();
-string getNumber(string phoneNumber);
 
 
 
 
-string getNumber(string phoneNumber)
-{
-	return phoneNumber;
-}
+
 string userName;
-string PASSWORD;
-string PHONENUMBER;
+
 const int NUM_LENGTH = 10;
-struct point
+
+
+void menuDesign()
 {
-	int x;
-	
-};
+	cout << "\n\n <WE SELL T-SHIRTS>\n";
+	cout << " --------------------\n";
+	cout << setw(23) << "\\  ^__^\n";
+	cout << setw(30) << "	\\ (oo)\_______\n";
+	cout << setw(34) << "(__)\       )\ / \ " << "\n";
+	cout << setw(32) << "    ||----m |  " << "\n";
+	cout << setw(32) << "  ||     ||`\n";
+}
 
 
-
-
-class Info
-{
-public:
-	string fN, lN, pN, uN;
-
-
-
-};
 
 void signUp()
 {
@@ -208,7 +200,7 @@ void getPassword()
 	{
 
 		cout << "\nWelcome " << userName << "!\n" << "Your account has been created. Thank you! \n\n";
-		password == PASSWORD;
+		
 	}
 	if (password != cPassword)
 	{
@@ -236,61 +228,63 @@ void getInfo()
 	cout << "Welcome!\n";
 	cout << "Thank you for deciding to sign up!\n\n";
 	cout << "Please enter your first name: ";
-	Info fName;
-	cin >> fName.fN;
 
 
-	while (fName.fN.size() > NUM_LENGTH) // may take it off 
+	string fName;
+	cin >> fName;
 
-	while (fName.lN.size() > NUM_LENGTH) // may take it off
+
+	while (fName.size() > NUM_LENGTH) // may take it off 
+
+	while (fName.size() > NUM_LENGTH) // may take it off
 
 
 	{
 		cout << "Please re-enter your first name: ";
-		cin >> fName.fN;
+		cin >> fName;
 	}
 
 	cout << "Enter your last name: ";
 	
-	Info lName;
-	cin >> lName.lN;
+	string lName;
+	cin >> lName;
 	
 
-	while (lName.lN.size() > NUM_LENGTH) // may take it off 
+	while (lName.size() > NUM_LENGTH) // may take it off 
 
 	string lName;
-	cin >> lName.lN;
+	cin >> lName;
 
 
-	while (lName.lN.size() > NUM_LENGTH) // may take it off
+	while (lName.size() > NUM_LENGTH) // may take it off
 
 
 	{
 		cin.clear();
 
 		cout << "Please re-enter your last name: ";
-		cin >> lName.lN;
+		cin >> lName;
 
 	}
 
 	cin.ignore();
 	cout << "Enter your phone number: ";
 
-	Info phoneNumber;
-	cin >> phoneNumber.pN;
-	phoneNumber.pN == PHONENUMBER;
-	while (phoneNumber.pN.size() > NUM_LENGTH) // may take it off 
+	string phoneNumber;
+	cin >> phoneNumber;
+	
+	while (phoneNumber.size() > NUM_LENGTH) // may take it off 
 
 	string phoneNumber;
-	cin >> phoneNumber.pN;
-	while (phoneNumber.pN.size() > NUM_LENGTH) // may take it off
+	cin >> phoneNumber;
+	while (phoneNumber.size() > NUM_LENGTH) // may take it off
 
 
 	{
 		cin.clear();
 
 		cout << "Please re-enter your phone number: ";
-		cin >> phoneNumber.pN;
+		cin >> phoneNumber;
 
 	}
 
@@ -309,7 +303,7 @@ void getInfo()
 
 	if (c == 'y' || c == 'Y')
 	{
-		changePersonalInfo(fName.fN, lName.lN, phoneNumber.pN);
+		changePersonalInfo(fName, lName, phoneNumber);
 	}
 	else if (c == 'n' || c == 'N')
 	{
@@ -319,7 +313,7 @@ void getInfo()
 
 	
 
-	getNumber(phoneNumber.pN);
+	
 	
 
 
@@ -330,7 +324,7 @@ void getInfo()
 	myFile.open("user.txt", ios::out);
 	if (myFile.is_open()) {
 
-			myFile << fName.fN << "\n" << lName.lN << "\n" << phoneNumber.pN << "\n" << username;
+			myFile << fName << "\n" << lName << "\n" << phoneNumber << "\n" << username;
 		
 
 
@@ -342,4 +336,5 @@ void getInfo()
 
 
 }
+
 
