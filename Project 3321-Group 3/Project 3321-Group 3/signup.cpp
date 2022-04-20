@@ -240,11 +240,11 @@ void getInfo()
 	Info fName;
 	cin >> fName.fN;
 
-<<<<<<< HEAD
+
 	while (fName.fN.size() > NUM_LENGTH) // may take it off 
-=======
+
 	while (fName.size() > NUM_LENGTH) // may take it off
->>>>>>> 5ed8c13bd76c4dfc78a5bde8c4ee9f754625e250
+
 
 	{
 		cout << "Please re-enter your first name: ";
@@ -252,19 +252,19 @@ void getInfo()
 	}
 
 	cout << "Enter your last name: ";
-<<<<<<< HEAD
+	
 	Info lName;
 	cin >> lName.lN;
 	
 
 	while (lName.lN.size() > NUM_LENGTH) // may take it off 
-=======
+
 	string lName;
 	cin >> lName;
 
 
 	while (lName.size() > NUM_LENGTH) // may take it off
->>>>>>> 5ed8c13bd76c4dfc78a5bde8c4ee9f754625e250
+
 
 	{
 		cin.clear();
@@ -276,17 +276,17 @@ void getInfo()
 
 	cin.ignore();
 	cout << "Enter your phone number: ";
-<<<<<<< HEAD
+
 	Info phoneNumber;
 	cin >> phoneNumber.pN;
 	phoneNumber.pN == PHONENUMBER;
 	while (phoneNumber.pN.size() > NUM_LENGTH) // may take it off 
-=======
+
 	string phoneNumber;
 	cin >> phoneNumber;
 	phoneNumber == PHONENUMBER;
 	while (phoneNumber.size() > NUM_LENGTH) // may take it off
->>>>>>> 5ed8c13bd76c4dfc78a5bde8c4ee9f754625e250
+
 
 	{
 		cin.clear();
@@ -318,26 +318,26 @@ void getInfo()
 		getPassword();
 	}
 	else getPassword();
-<<<<<<< HEAD
+
 	
 
 	getNumber(phoneNumber.pN);
 	
-=======
 
 
->>>>>>> 5ed8c13bd76c4dfc78a5bde8c4ee9f754625e250
+
+
 
 	fstream myFile;
 	myFile.open("user.txt", ios::out);
 	if (myFile.is_open()) {
-<<<<<<< HEAD
+
 			myFile << fName.fN << "\n" << lName.lN << "\n" << phoneNumber.pN << "\n" << username;
 		
-=======
+
 		myFile << fName << "\n" << lName << "\n" << phoneNumber << "\n" << username;
 
->>>>>>> 5ed8c13bd76c4dfc78a5bde8c4ee9f754625e250
+
 		myFile.close();
 	}
 
