@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-Franciscoc
-Alfaro
-3462821804
-relegated
-=======
+
 Francisco
 Alfaro
 3462821804
-relegatedleader
->>>>>>> 5ed8c13bd76c4dfc78a5bde8c4ee9f754625e250
+relegated
+
+
