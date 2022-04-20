@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+﻿  signup.cpp
+C:\Users\frank\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(212,12): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\frank\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(269,17): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Project 3321-Group 3.vcxproj -> C:\Users\frank\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe
+=======
 ﻿  cartMenu.cpp
   mainMenu.cpp
 C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\mainMenu.cpp(19,22): warning C4129: '_': unrecognized character escape sequence
@@ -11,3 +17,4 @@ C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Gr
   Generating Code...
   LINK : C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe not found or not built by the last incremental link; performing full link
   Project 3321-Group 3.vcxproj -> C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe
+>>>>>>> 5ed8c13bd76c4dfc78a5bde8c4ee9f754625e250
