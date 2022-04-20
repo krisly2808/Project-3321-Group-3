@@ -1,4 +1,3 @@
-
 #include "signup.h"
 #include <iostream>
 #include<iomanip>
@@ -243,7 +242,7 @@ void getInfo()
 
 	while (fName.fN.size() > NUM_LENGTH) // may take it off 
 
-	while (fName.size() > NUM_LENGTH) // may take it off
+	while (fName.lN.size() > NUM_LENGTH) // may take it off
 
 
 	{
@@ -260,10 +259,10 @@ void getInfo()
 	while (lName.lN.size() > NUM_LENGTH) // may take it off 
 
 	string lName;
-	cin >> lName;
+	cin >> lName.lN;
 
 
-	while (lName.size() > NUM_LENGTH) // may take it off
+	while (lName.lN.size() > NUM_LENGTH) // may take it off
 
 
 	{
@@ -283,9 +282,8 @@ void getInfo()
 	while (phoneNumber.pN.size() > NUM_LENGTH) // may take it off 
 
 	string phoneNumber;
-	cin >> phoneNumber;
-	phoneNumber == PHONENUMBER;
-	while (phoneNumber.size() > NUM_LENGTH) // may take it off
+	cin >> phoneNumber.pN;
+	while (phoneNumber.pN.size() > NUM_LENGTH) // may take it off
 
 
 	{
@@ -335,7 +333,6 @@ void getInfo()
 			myFile << fName.fN << "\n" << lName.lN << "\n" << phoneNumber.pN << "\n" << username;
 		
 
-		myFile << fName << "\n" << lName << "\n" << phoneNumber << "\n" << username;
 
 
 		myFile.close();
