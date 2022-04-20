@@ -1,4 +1,5 @@
 #pragma once
 
-void signUp();
-
+	void signUp();
+	void forgotPassword();
+	void menuDesign();
