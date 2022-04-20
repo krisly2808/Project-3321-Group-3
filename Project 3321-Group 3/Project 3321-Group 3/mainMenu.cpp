@@ -1,6 +1,7 @@
 #include "mainMenu.h"
 #include "guestMenu.h"
 #include "signup.h"
+#include "LoginMenu.h"
 # include <iostream>
 #include <iomanip>
 
@@ -46,6 +47,7 @@ void printDetailMainMenu(int option) {
 	{
 	case 1:
 		cout << "Printing the login menu\n";
+		getLogin();
 		break;
 	case 2:
 		signUp();
