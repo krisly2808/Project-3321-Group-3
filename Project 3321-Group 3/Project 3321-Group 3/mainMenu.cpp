@@ -1,22 +1,31 @@
 #include "mainMenu.h"
 #include "guestMenu.h"
 #include "signup.h"
+#include "LoginMenu.h"
 # include <iostream>
 #include <iomanip>
 
 using namespace std;
 
 //Function Definitions
-// 
+//
 //Function to print the main menu for all users to input choice-Kris Ly
 
 
+<<<<<<< HEAD
 void nenuDesign()
+=======
+void menuDesign()
+>>>>>>> 5ed8c13bd76c4dfc78a5bde8c4ee9f754625e250
 {
 	cout << "\n\n <WE SELL T-SHIRTS>\n";
 	cout << " --------------------\n";
 	cout << setw(23) << "\\  ^__^\n";
+<<<<<<< HEAD
 	cout << setw(30) << "	\\ (oo)\_______\n";
+=======
+	cout << setw(30) << " \\ (oo)\_______\n";
+>>>>>>> 5ed8c13bd76c4dfc78a5bde8c4ee9f754625e250
 	cout << setw(34) << "(__)\       )\ / \ " << "\n";
 	cout << setw(32) << "    ||----m |  " << "\n";
 	cout << setw(32) << "  ||     ||`\n";
@@ -28,7 +37,11 @@ void nenuDesign()
 
 
 void printMainMenu() {
+<<<<<<< HEAD
 	nenuDesign();
+=======
+	menuDesign();
+>>>>>>> 5ed8c13bd76c4dfc78a5bde8c4ee9f754625e250
 	cout << "\n\nPlease select you option from the list below:\n ";
 	cout << "\t1. Login.\n ";
 	cout << "\t2. Sign-up as User.\n ";
@@ -46,6 +59,7 @@ void printDetailMainMenu(int option) {
 	{
 	case 1:
 		cout << "Printing the login menu\n";
+		getLogin();
 		break;
 	case 2:
 		signUp();
@@ -67,3 +81,6 @@ void printDetailMainMenu(int option) {
 		break;
 	}
 }
+
+
+
