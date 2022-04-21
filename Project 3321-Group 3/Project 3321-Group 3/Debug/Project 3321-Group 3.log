@@ -1,14 +1,2 @@
-﻿  Project 3321-Group 3.cpp
-  cartMenu.cpp
-  guestMenu.cpp
-  mainMenu.cpp
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\mainMenu.cpp(24,22): warning C4129: '_': unrecognized character escape sequence
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\mainMenu.cpp(26,22): warning C4129: '_': unrecognized character escape sequence
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\mainMenu.cpp(28,22): warning C4129: ' ': unrecognized character escape sequence
-  signup.cpp
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(30,22): warning C4129: '_': unrecognized character escape sequence
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(31,22): warning C4129: ' ': unrecognized character escape sequence
-  Generating Code...
-signup.obj : error LNK2005: "void __cdecl menuDesign(void)" (?menuDesign@@YAXXZ) already defined in mainMenu.obj
-mainMenu.obj : error LNK2019: unresolved external symbol "void __cdecl getLogin(void)" (?getLogin@@YAXXZ) referenced in function "void __cdecl printDetailMainMenu(int)" (?printDetailMainMenu@@YAXH@Z)
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe : fatal error LNK1120: 1 unresolved externals
+﻿  mainMenu.cpp
+  Project 3321-Group 3.vcxproj -> C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe

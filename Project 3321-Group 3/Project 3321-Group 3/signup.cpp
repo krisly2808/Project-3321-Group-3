@@ -27,8 +27,8 @@ void menuDesign()
 	cout << "\n\n <WE SELL T-SHIRTS>\n";
 	cout << " --------------------\n";
 	cout << setw(23) << "\\  ^__^\n";
-	cout << setw(30) << "	\\ (oo)\_______\n";
-	cout << setw(34) << "(__)\       )\ / \ " << "\n";
+	cout << setw(30) << "	\\ (oo)\\_______\n";
+	cout << setw(34) << "(__)\\       )\\ / \\ " << "\n";
 	cout << setw(32) << "    ||----m |  " << "\n";
 	cout << setw(32) << "  ||     ||`\n";
 }
