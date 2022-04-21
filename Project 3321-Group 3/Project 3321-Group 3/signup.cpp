@@ -1,22 +1,39 @@
-
 #include "signup.h"
 #include <iostream>
 #include<iomanip>
 #include <ctime>
 #include <string>
+#include <fstream>
+#include <vector>
 using namespace std;
 
-void forgotPassword(string);
+void forgotPassword();
 void getInfo();
 void changePersonalInfo(string fName, string lName, string phoneNumber);
 void getPassword();
+void passPassword();
+
+
 
 
 
 string userName;
-string PASSWORD;
-string PHONENUMBER;
+
 const int NUM_LENGTH = 10;
+
+
+void menuDesign()
+{
+	cout << "\n\n <WE SELL T-SHIRTS>\n";
+	cout << " --------------------\n";
+	cout << setw(23) << "\\  ^__^\n";
+	cout << setw(30) << "	\\ (oo)\_______\n";
+	cout << setw(34) << "(__)\       )\ / \ " << "\n";
+	cout << setw(32) << "    ||----m |  " << "\n";
+	cout << setw(32) << "  ||     ||`\n";
+}
+
+
 
 void signUp()
 {
@@ -24,27 +41,92 @@ void signUp()
 
 }
 
-void forgotPassword(string phoneNumber) //this new way of getting the password is based on constants instead of storing it in an array ... 
-//im thinking of getting creating an array to hold the information (all string based) but get all of that information into one function to separate it if needed to
+void forgotPassword()
 
 {
 
-	cout << "\n\nWe all tend to forget our password from time to time, and that's okay!\n";
-	cout << "Please enter your phone number: ";
-	string phoneNo;
 	
-	if (phoneNo == PHONENUMBER)
 	{
-		cout << "Enter your new password: ";
-		string password;
-		cin >> password;
-		cout << "Re-enter your password: ";
-		cin >> password;
-		cout << "Congrats! Your new password has been saved.\n";
+		string line;
+		ifstream file("passedPassword.txt");
+
+
+
+		if (file.is_open())
+		{
+			cout << "\n\nWe all tend to forget our password from time to time, and that's okay!\n";
+			cout << "Please enter your phone number: ";
+			string phoneNo;
+			cin >> phoneNo;
+
+
+			//if (phoneNo == PHONENUMBER)
+		//	{
+				for (int lineno = 1; getline(file, line) && lineno <= 1; lineno++)
+					if (lineno == 1 && file)
+						cout << "\nThis is your password: ";
+				cout << line << endl;
+				cout << "Please login now...\n";
+				file.close();
+			//}
+			//else cout << "Invalid number...\n";
+
+
+			/*
+			
+			while (phoneNo != PHONENUMBER)
+			{
+				cout << "Enter a valid number: ";
+				cin >> phoneNo;
+			}
+
+			
+			*/
+
+
+		}
+		else cout << "Can not open the file";
+
 	}
 	
 
+	
 
+	
+}
+
+
+void passPassword()
+{
+
+
+	
+	{
+		string line;
+		ifstream file("passedPassword.txt");
+
+
+
+		if (file.is_open())
+		{
+			cout << "\n\nWe all tend to forget our password from time to time, and that's okay!\n";
+			cout << "Please enter your phone number: ";
+			string phoneNo;
+			cin >> phoneNo;
+
+
+
+			for (int lineno = 1; getline(file, line) && lineno <= 1; lineno++)
+				if (lineno == 1 && file)
+					cout << "\nThis is your password: ";
+			cout << line << endl;
+			cout << "Please login now...\n";
+			file.close();
+
+		}
+		else cout << "Can not open the file";
+
+	}
 
 }
 
@@ -82,13 +164,13 @@ void changePersonalInfo(string fName, string lName, string phoneNumber)
 
 
 		break;
-	case 2:	cout << "Enter the new desired last name: ";
+	case 2: cout << "Enter the new desired last name: ";
 		cin >> lName;
 		cout << "\nGreat, " << fName << "! Let's now move forward on getting the rest of your information.\n";
 		getPassword();
 
 		break;
-	case 3:	cout << "Enter the new desired phone number: ";
+	case 3: cout << "Enter the new desired phone number: ";
 		cin >> phoneNumber;
 		cout << "\nGreat, " << fName << "! Let's now move forward on getting the rest of your information.\n";
 		getPassword();
@@ -110,21 +192,28 @@ void getPassword()
 	cin.ignore();
 
 	cout << "Please confirm your password: ";
-	string cPassword; // confirmed password variable 
+	string cPassword; // confirmed password variable
 	cin >> cPassword;
 	cin.ignore();
 
 	if (password == cPassword)
 	{
-		
+
 		cout << "\nWelcome " << userName << "!\n" << "Your account has been created. Thank you! \n\n";
-		password == PASSWORD;
+		
 	}
 	if (password != cPassword)
 	{
 		cout << "The passwords don't match!\n\n";
 		return getPassword();
 
+	}
+	fstream myFile;
+	myFile.open("passedPassword.txt", ios::out);
+	if (myFile.is_open()) {
+		myFile << password;
+
+		myFile.close();
 	}
 
 
@@ -139,10 +228,16 @@ void getInfo()
 	cout << "Welcome!\n";
 	cout << "Thank you for deciding to sign up!\n\n";
 	cout << "Please enter your first name: ";
+
+
 	string fName;
 	cin >> fName;
 
+
 	while (fName.size() > NUM_LENGTH) // may take it off 
+
+	while (fName.size() > NUM_LENGTH) // may take it off
+
 
 	{
 		cout << "Please re-enter your first name: ";
@@ -150,11 +245,19 @@ void getInfo()
 	}
 
 	cout << "Enter your last name: ";
+	
 	string lName;
 	cin >> lName;
 	
 
 	while (lName.size() > NUM_LENGTH) // may take it off 
+
+	string lName;
+	cin >> lName;
+
+
+	while (lName.size() > NUM_LENGTH) // may take it off
+
 
 	{
 		cin.clear();
@@ -163,13 +266,19 @@ void getInfo()
 		cin >> lName;
 
 	}
-	
+
 	cin.ignore();
 	cout << "Enter your phone number: ";
+
 	string phoneNumber;
 	cin >> phoneNumber;
-	phoneNumber == PHONENUMBER;
+	
 	while (phoneNumber.size() > NUM_LENGTH) // may take it off 
+
+	string phoneNumber;
+	cin >> phoneNumber;
+	while (phoneNumber.size() > NUM_LENGTH) // may take it off
+
 
 	{
 		cin.clear();
@@ -182,9 +291,9 @@ void getInfo()
 	cout << "Enter your desired permanent username: ";
 	string username;
 	cin >> userName;
-	//thinking of having a restriction of max characters in a username 
+	//thinking of having a restriction of max characters in a username
 
-	username = userName; // this is going to be a valauble way of using certain code such as changing passwords... 
+	username = userName; // this is going to be a valauble way of using certain code such as changing passwords...
 
 
 	cout << "\nBefore we ask for your password, would you like to change any of the recent information?(y/n or any other character)\n";
@@ -201,6 +310,31 @@ void getInfo()
 		getPassword();
 	}
 	else getPassword();
+
 	
 
+	
+	
+
+
+
+
+
+	fstream myFile;
+	myFile.open("user.txt", ios::out);
+	if (myFile.is_open()) {
+
+			myFile << fName << "\n" << lName << "\n" << phoneNumber << "\n" << username;
+		
+
+
+
+		myFile.close();
+	}
+
+
+
+
 }
+
+
