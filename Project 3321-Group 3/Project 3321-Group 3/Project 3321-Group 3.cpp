@@ -19,7 +19,6 @@ int main()
     //Do-while loop to repeat the program-Kris Ly
     do {
         cin.clear();
-        cin.ignore();
         system("CLS");
         //Print out the main menu prompt-Kris Ly
         printMainMenu();

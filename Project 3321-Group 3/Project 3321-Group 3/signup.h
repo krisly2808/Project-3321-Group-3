@@ -2,4 +2,6 @@
 
 	void signUp();
 	void forgotPassword();
+
 	void menuDesign();
+

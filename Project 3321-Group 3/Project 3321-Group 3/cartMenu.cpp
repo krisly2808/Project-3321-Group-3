@@ -44,18 +44,22 @@ void viewCart() {
 	//open "cart.txt" to display all items in cart
 	fstream myFile;
 	myFile.open("cart.txt", ios::in);
-	cout << "\tThis is the product currently in your cart\n";
-	cout << "=====================================================\n";
-	cout << "|Design no|          Name            |     Quantity  |\n";
-	cout << "=====================================================\n";
+	cout << "\t\tThis is the product currently in your cart\n";
+	cout << "=====================================================================\n";
+	cout << "|Design no|          Name            |     Quantity  |     Price     |\n";
+	cout << "=====================================================================\n";
 
 	//Iterate throught "cart.txt" to display items on screen
 	if (myFile.is_open()) {
 		string designID, designName;
 		int quantity;
-		while (myFile >> designID&& myFile >> designName&& myFile >> quantity) {
-			cout << "   " << designID << "\t"<<setw(20) << designName <<"\t\t"<< quantity << endl;
+		double price;
+		double total = 0.0;
+		while (myFile >> designID&& myFile >> designName&& myFile >> quantity &&myFile >> price) {
+			total += price;
+			cout << "   " << designID << "\t"<<setw(20) << designName <<"\t\t"<< quantity<<"\t\t" << price << endl;
 		}
+		cout << "\tTotal price is: " << total << endl;
 		myFile.close();
 	}
 }
@@ -134,6 +138,7 @@ void modifyCart() {
 void deleteItem() {
 	string designID, designName, itemID;
 	int quantity;
+	double price;
 	bool isValidID=false;	//variable to check if input item ID is valid
 
 	cout << "Enter the Design ID of item you want to delete \n";
@@ -142,7 +147,7 @@ void deleteItem() {
 	//Checking if input item ID is in the file -"cart.txt". Return true if valid
 	ifstream checkItemID;
 	checkItemID.open("cart.txt");
-	while (checkItemID >> designID && checkItemID >> designName && checkItemID >> quantity) {
+	while (checkItemID >> designID && checkItemID >> designName && checkItemID >> quantity && checkItemID >> price) {
 		if (itemID == designID) isValidID = true;
 	}
 	checkItemID.close();
@@ -155,11 +160,12 @@ void deleteItem() {
 		outFile.open("newCart.txt");	//create and open "newcart.txt" in write mode to hold the temp values of cart
 		
 		//Copy the items that not need to be deleted to "newcart.txt"
-		while (inFile >> designID && inFile >> designName && inFile >> quantity) {
+		while (inFile >> designID && inFile >> designName && inFile >> quantity && inFile >> price) {
 			if (designID != itemID) {
 				outFile << designID << "\t";
 				outFile << designName << "\t";
-				outFile << quantity << endl;
+				outFile << quantity <<"\t";
+				outFile << price << endl;
 			}
 		}
 		inFile.close();
@@ -186,6 +192,7 @@ void deleteItem() {
 void updateQuantity() {
 	string designID, designName, itemID;
 	int quantity, updateQuantity;
+	double price;
 	bool isValidID = false;			//variable to check if input item ID is valid
 
 	cout << "Enter the Design ID of item you want to update: \n";
@@ -196,7 +203,7 @@ void updateQuantity() {
 	//Checking if input item ID is in the file -"cart.txt". Return true if valid
 	ifstream checkItemID;
 	checkItemID.open("cart.txt");
-	while (checkItemID >> designID && checkItemID >> designName && checkItemID >> quantity) {
+	while (checkItemID >> designID && checkItemID >> designName && checkItemID >> quantity && checkItemID >> price) {
 		if (itemID == designID) isValidID = true;
 	}
 	checkItemID.close();
@@ -208,16 +215,18 @@ void updateQuantity() {
 	outFile.open("newCart.txt");	//create and open "newcart.txt" in write mode to hold the temp values of cart
 
 	//Copy and update the info of items to "newcart.txt"
-	while (inFile >> designID && inFile >> designName && inFile >> quantity) {
+	while (inFile >> designID && inFile >> designName && inFile >> quantity && inFile >> price) {
 		if (designID == itemID) {
 			outFile << designID << "\t";
 			outFile << designName << "\t";
-			outFile << updateQuantity << endl;
+			outFile << updateQuantity << "\t";
+			outFile << price / quantity * updateQuantity << endl;
 		}
 		else {
 			outFile << designID << "\t";
 			outFile << designName << "\t";
-			outFile << quantity << endl;
+			outFile << quantity << "\t";
+			outFile << price << endl;
 		}
 	}
 	inFile.close();
@@ -243,6 +252,7 @@ void updateQuantity() {
 void addItem() {
 	string designID, designName, itemID;
 	int quantity, addedQuantity;
+	double price;
 	bool isValidID = false;			//variable to check if input item ID is valid
 	bool isInCart = false;			//variable to check if the item added has been in cart
 	viewProducts();
@@ -254,7 +264,7 @@ void addItem() {
 	//Checking if input item ID is in the file of items carried -"product.txt". Return true if valid
 	ifstream checkItemID;
 	checkItemID.open("products.txt");
-	while (checkItemID >> designID && checkItemID >> designName) {
+	while (checkItemID >> designID && checkItemID >> designName && checkItemID >> price) {
 		if (itemID == designID) isValidID = true;
 	}
 	checkItemID.close();
@@ -262,7 +272,7 @@ void addItem() {
 	//Checking if input item ID is in the cart -"cart.txt". Return true if valid
 	ifstream checkInCart;
 	checkInCart.open("cart.txt");
-	while (checkInCart >> designID && checkInCart >> designName&& checkInCart>>quantity) {
+	while (checkInCart >> designID && checkInCart >> designName&& checkInCart>>quantity&&checkInCart >> price) {
 		if (itemID == designID) isInCart = true;
 	}
 	checkInCart.close();
@@ -277,16 +287,17 @@ void addItem() {
 		//Copy and update the info of items to "newcart.txt"
 		if (isInCart) {
 			//Update quantity if item is already in cart
-			while (inFile >> designID && inFile >> designName && inFile >> quantity) {
+			while (inFile >> designID && inFile >> designName && inFile >> quantity && inFile >> price) {
 				if (designID == itemID) {
 					outFile << designID << "\t";
 					outFile << designName << "\t";
-					outFile << addedQuantity + quantity << endl;
+					outFile << (addedQuantity + quantity)*price/quantity << endl;
 				}
 				else {
 					outFile << designID << "\t";
 					outFile << designName << "\t";
-					outFile << quantity << endl;
+					outFile << quantity << "\t";
+					outFile << price << endl;
 				}
 			}
 		}
@@ -294,16 +305,18 @@ void addItem() {
 			//Adding new item to the cart
 			ifstream inFileProduct;
 			inFileProduct.open("products.txt");
-			while (inFile >> designID && inFile >> designName && inFile >> quantity) {
+			while (inFile >> designID && inFile >> designName && inFile >> quantity && inFile >> price) {
 				outFile << designID << "\t";
 				outFile << designName << "\t";
-				outFile << quantity << endl;
+				outFile << quantity << "\t";
+				outFile << price << endl;
 			}
-			while (inFileProduct>>designID&& inFileProduct>>designName) {
+			while (inFileProduct>>designID&& inFileProduct>>designName && inFileProduct >> price) {
 				if (designID==itemID) {
 					outFile << designID << "\t";
 					outFile << designName << "\t";
-					outFile << addedQuantity << endl;
+					outFile << addedQuantity << "\t";
+					outFile << price * addedQuantity << endl;
 				}
 			}
 			inFileProduct.close();
