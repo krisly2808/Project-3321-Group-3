@@ -1,5 +1,6 @@
 //Function related to Cart menu
 #include "cartMenu.h"
+#include "checkOut.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -11,7 +12,8 @@ void printCartMenu() {
 	cout << "Please select you option from the list below:\n ";
 	cout << "\t1. View Cart.\n ";
 	cout << "\t2. Modify Cart.\n ";
-	cout << "\t3. Back to previous Menu.\n ";
+	cout << "\t3. Check-out\n ";
+	cout << "\t4. Back to previous Menu.\n ";
 }
 
 //Function to print detail menu based on input-Kris Ly
@@ -27,6 +29,9 @@ void printDetailCartMenu(int option) {
 		modifyCart();
 		break;
 	case 3:
+		checkOut();
+		break;
+	case 4:
 		int choice;
 		printGuestMenu();
 		cin >> choice;

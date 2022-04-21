@@ -1,5 +1,6 @@
 #include "guestMenu.h"
 #include "reviews.h"
+#include "checkOut.h"
 
 //Function Definitions
 // 
@@ -9,7 +10,8 @@ void printGuestMenu() {
 	cout << "\t1. View products.\n ";
 	cout << "\t2. View/Modify Cart.\n ";
 	cout << "\t3. View reviews.\n ";
-	cout << "\t4. Exit to main menu.\n ";
+	cout << "\t4. Checkout.\n ";
+	cout << "\t5. Exit to main menu.\n ";
 }
 
 //Function to print menu for Guest-Kris Ly
@@ -31,6 +33,9 @@ void printDetailGuestMenu(int option) {
 		printReviews();
 		break;
 	case 4:
+		checkOut();
+		break;
+	case 5:
 		int choice4;
 		printMainMenu();
 		cin >> choice4;
