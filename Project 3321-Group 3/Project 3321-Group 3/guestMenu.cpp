@@ -1,4 +1,5 @@
 #include "guestMenu.h"
+#include "reviews.h"
 
 //Function Definitions
 // 
@@ -27,11 +28,7 @@ void printDetailGuestMenu(int option) {
 		printDetailCartMenu(choice2);
 		break;
 	case 3:
-		//printReviews();
-		int choice3;
-		printMainMenu();
-		cin >> choice3;
-		printDetailMainMenu(choice3);
+		printReviews();
 		break;
 	case 4:
 		int choice4;

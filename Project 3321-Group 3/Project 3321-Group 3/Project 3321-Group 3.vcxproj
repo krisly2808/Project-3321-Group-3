@@ -144,6 +144,7 @@
     <ClCompile Include="Project 3321-Group 3.cpp" />
     <ClCompile Include="guestMenu.cpp" />
     <ClCompile Include="products.cpp" />
+    <ClCompile Include="review.cpp" />
     <ClCompile Include="signup.cpp" />
   </ItemGroup>
   <ItemGroup>
