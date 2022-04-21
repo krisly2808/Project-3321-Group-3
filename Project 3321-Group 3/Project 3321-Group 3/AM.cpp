@@ -6,7 +6,7 @@ void printAdminMenu(){
 
 //Would eventually like to replace "Admin" with actual admin username
     cout << "Welcome Admin!" ;
-    cout << "\t 1. View and Manage Your Orders \n" ;
+    cout << "\t 1. View and Your Orders \n" ;
     cout << "\t 2. View and Manage Your Word and Art Bank \n";
     cout << "\t 3. View and Manage Your Inventory \n";
     cout << "\t 4. Change Currency \n";
@@ -20,7 +20,8 @@ void detailsAdminMenu(int option){
 
     switch(option){
 
-        case 1: //viewOrdersMenu();
+        case 1: 
+        viewOrders();
         break;
 
         case 2: 

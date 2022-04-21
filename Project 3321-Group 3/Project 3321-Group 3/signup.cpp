@@ -1,23 +1,39 @@
-
 #include "signup.h"
 #include <iostream>
 #include<iomanip>
 #include <ctime>
 #include <string>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 void forgotPassword();
 void getInfo();
 void changePersonalInfo(string fName, string lName, string phoneNumber);
 void getPassword();
+void passPassword();
+
+
 
 
 
 string userName;
-string PASSWORD;
-string PHONENUMBER;
+
 const int NUM_LENGTH = 10;
+
+
+void menuDesign()
+{
+	cout << "\n\n <WE SELL T-SHIRTS>\n";
+	cout << " --------------------\n";
+	cout << setw(23) << "\\  ^__^\n";
+	cout << setw(30) << "	\\ (oo)\_______\n";
+	cout << setw(34) << "(__)\       )\ / \ " << "\n";
+	cout << setw(32) << "    ||----m |  " << "\n";
+	cout << setw(32) << "  ||     ||`\n";
+}
+
+
 
 void signUp()
 {
@@ -29,25 +45,88 @@ void forgotPassword()
 
 {
 
-	cout << "\n\nWe all tend to forget our password from time to time, and that's okay!\n";
-	cout << "Please enter your phone number: ";
-	string phoneNo;
-	cin >> phoneNo;
-
-
-	if (phoneNo == PHONENUMBER)
+	
 	{
-		cout << "Enter your new password: ";
-		string password;
-		cin >> password;
-		cout << "Re-enter your password: ";
-		cin >> password;
-		cout << "Congrats! Your new password has been saved.\n";
+		string line;
+		ifstream file("passedPassword.txt");
+
+
+
+		if (file.is_open())
+		{
+			cout << "\n\nWe all tend to forget our password from time to time, and that's okay!\n";
+			cout << "Please enter your phone number: ";
+			string phoneNo;
+			cin >> phoneNo;
+
+
+			//if (phoneNo == PHONENUMBER)
+		//	{
+				for (int lineno = 1; getline(file, line) && lineno <= 1; lineno++)
+					if (lineno == 1 && file)
+						cout << "\nThis is your password: ";
+				cout << line << endl;
+				cout << "Please login now...\n";
+				file.close();
+			//}
+			//else cout << "Invalid number...\n";
+
+
+			/*
+			
+			while (phoneNo != PHONENUMBER)
+			{
+				cout << "Enter a valid number: ";
+				cin >> phoneNo;
+			}
+
+			
+			*/
+
+
+		}
+		else cout << "Can not open the file";
+
 	}
+	
 
-	else
-		cout << "Invalid phone number.";
+	
 
+	
+}
+
+
+void passPassword()
+{
+
+
+	
+	{
+		string line;
+		ifstream file("passedPassword.txt");
+
+
+
+		if (file.is_open())
+		{
+			cout << "\n\nWe all tend to forget our password from time to time, and that's okay!\n";
+			cout << "Please enter your phone number: ";
+			string phoneNo;
+			cin >> phoneNo;
+
+
+
+			for (int lineno = 1; getline(file, line) && lineno <= 1; lineno++)
+				if (lineno == 1 && file)
+					cout << "\nThis is your password: ";
+			cout << line << endl;
+			cout << "Please login now...\n";
+			file.close();
+
+		}
+		else cout << "Can not open the file";
+
+	}
 
 }
 
@@ -121,13 +200,20 @@ void getPassword()
 	{
 
 		cout << "\nWelcome " << userName << "!\n" << "Your account has been created. Thank you! \n\n";
-		password == PASSWORD;
+		
 	}
 	if (password != cPassword)
 	{
 		cout << "The passwords don't match!\n\n";
 		return getPassword();
 
+	}
+	fstream myFile;
+	myFile.open("passedPassword.txt", ios::out);
+	if (myFile.is_open()) {
+		myFile << password;
+
+		myFile.close();
 	}
 
 
@@ -142,10 +228,16 @@ void getInfo()
 	cout << "Welcome!\n";
 	cout << "Thank you for deciding to sign up!\n\n";
 	cout << "Please enter your first name: ";
+
+
 	string fName;
 	cin >> fName;
 
+
+	while (fName.size() > NUM_LENGTH) // may take it off 
+
 	while (fName.size() > NUM_LENGTH) // may take it off
+
 
 	{
 		cout << "Please re-enter your first name: ";
@@ -153,11 +245,19 @@ void getInfo()
 	}
 
 	cout << "Enter your last name: ";
+	
+	string lName;
+	cin >> lName;
+	
+
+	while (lName.size() > NUM_LENGTH) // may take it off 
+
 	string lName;
 	cin >> lName;
 
 
 	while (lName.size() > NUM_LENGTH) // may take it off
+
 
 	{
 		cin.clear();
@@ -169,10 +269,16 @@ void getInfo()
 
 	cin.ignore();
 	cout << "Enter your phone number: ";
+
 	string phoneNumber;
 	cin >> phoneNumber;
-	phoneNumber == PHONENUMBER;
+	
+	while (phoneNumber.size() > NUM_LENGTH) // may take it off 
+
+	string phoneNumber;
+	cin >> phoneNumber;
 	while (phoneNumber.size() > NUM_LENGTH) // may take it off
+
 
 	{
 		cin.clear();
@@ -205,12 +311,23 @@ void getInfo()
 	}
 	else getPassword();
 
+	
+
+	
+	
+
+
+
 
 
 	fstream myFile;
 	myFile.open("user.txt", ios::out);
 	if (myFile.is_open()) {
-		myFile << fName << "\n" << lName << "\n" << phoneNumber << "\n" << username;
+
+			myFile << fName << "\n" << lName << "\n" << phoneNumber << "\n" << username;
+		
+
+
 
 		myFile.close();
 	}
@@ -219,4 +336,5 @@ void getInfo()
 
 
 }
+
 

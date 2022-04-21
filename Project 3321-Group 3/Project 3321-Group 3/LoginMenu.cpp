@@ -1,11 +1,6 @@
 #include "AM.h"
-#include <iostream>
-#include<iomanip>
-#include <ctime>
-#include <string>
-#include <fstream>
-using namespace std;
-
+#include "LoginMenu.h"
+#include "UserMenu.h"
 
 void getLogin();
 void validateLogin();
@@ -61,7 +56,7 @@ void validateLogin( string userName, string passWord){
         printAdminMenu();
         }
         else if (c == 'u' || c == 'U'){
-            //printUserMenu();
+        printUserMenu();
         }
         else {
             cout << "Invalid Choice";
