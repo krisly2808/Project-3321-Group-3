@@ -5,7 +5,6 @@
 #include <string>
 #include <fstream>
 #include <vector>
-//FA 
 using namespace std;
 
 void forgotPassword();
@@ -13,27 +12,19 @@ void getInfo();
 void changePersonalInfo(string fName, string lName, string phoneNumber);
 void getPassword();
 void passPassword();
-void securityCode();
-void getPin();
 
 
 
 
-string USERNAME;
-string PASSWORD;
-string PHONENUMBER;
-int PIN;
+
+string userName;
 
 const int NUM_LENGTH = 10;
 
 
 void menuDesign()
-
-
-
 {
 	cout << "\n\n <WE SELL T-SHIRTS>\n";
-
 	cout << " --------------------\n";
 	cout << setw(23) << "\\  ^__^\n";
 	cout << setw(30) << "	\\ (oo)\_______\n";
@@ -43,31 +34,9 @@ void menuDesign()
 }
 
 
-/* cute box design
-const char TB = '\xCD'; // 205
-	const char LR = '\xBA'; // 186
-	const char TL = '\xC9'; // 201
-	const char TR = '\xBB'; // 187
-	const char BL = '\xC8'; // 200
-	const char BR = '\xBC'; // 188
 
-	string hello = "Hello World!";
-	string margin = "  ";
-	string line(hello.length() + 2 * margin.length(), TB);
-
-	cout << TL << line << TR << endl;
-	cout << LR << margin << hello << margin << LR << endl;
-	cout << BL << line << BR << endl;
-	cout << endl;
-
-
-*/
 void signUp()
 {
-
-
-
-
 	getInfo();
 
 }
@@ -76,55 +45,7 @@ void forgotPassword()
 
 {
 
-
-	//cout << "Enter your phone number: ";
-	//string phoneNumber;
-	//getline(cin, phoneNumber);
-
-	//if (phoneNumber == PHONENUMBER)
-	//{
-
-	\
-		cout << "\n\n <HI! I remember you!>\n";
-
-	cout << " --------------------\n";
-	cout << setw(23) << "\\  ^__^\n";
-	cout << setw(30) << "	\\ (oo)\_______\n";
-	cout << setw(34) << "(__)\       )\ / \ " << "\n";
-	cout << setw(32) << "    ||----m |  " << "\n";
-	cout << setw(32) << "  ||     ||`\n";
-
-
-
-
-
-
-
-	cout << "\nPlease input your pin: ";
-
-	int pin;
-	cin >> pin;
-	if (pin == PIN)
-	{
-		passPassword();
-
-	}
-	else cout << "\nWrong pin...\n";
-
-	//}
-	//else cout << "Invalid number...\n";
-
-
-
-
-}
-
-
-void passPassword()
-{
-
-
-
+	
 	{
 		string line;
 		ifstream file("passedPassword.txt");
@@ -134,7 +55,62 @@ void passPassword()
 		if (file.is_open())
 		{
 			cout << "\n\nWe all tend to forget our password from time to time, and that's okay!\n";
-			cout << "Please enter your phone number: ";///switch to re-enter if other function works 
+			cout << "Please enter your phone number: ";
+			string phoneNo;
+			cin >> phoneNo;
+
+
+			//if (phoneNo == PHONENUMBER)
+		//	{
+				for (int lineno = 1; getline(file, line) && lineno <= 1; lineno++)
+					if (lineno == 1 && file)
+						cout << "\nThis is your password: ";
+				cout << line << endl;
+				cout << "Please login now...\n";
+				file.close();
+			//}
+			//else cout << "Invalid number...\n";
+
+
+			/*
+			
+			while (phoneNo != PHONENUMBER)
+			{
+				cout << "Enter a valid number: ";
+				cin >> phoneNo;
+			}
+
+			
+			*/
+
+
+		}
+		else cout << "Can not open the file";
+
+	}
+	
+
+	
+
+	
+}
+
+
+void passPassword()
+{
+
+
+	
+	{
+		string line;
+		ifstream file("passedPassword.txt");
+
+
+
+		if (file.is_open())
+		{
+			cout << "\n\nWe all tend to forget our password from time to time, and that's okay!\n";
+			cout << "Please enter your phone number: ";
 			string phoneNo;
 			cin >> phoneNo;
 
@@ -223,8 +199,8 @@ void getPassword()
 	if (password == cPassword)
 	{
 
-		cout << "\nWelcome " << USERNAME << "!\n" << "Your account has been created. Thank you! \n\n";
-
+		cout << "\nWelcome " << userName << "!\n" << "Your account has been created. Thank you! \n\n";
+		
 	}
 	if (password != cPassword)
 	{
@@ -241,12 +217,6 @@ void getPassword()
 	}
 
 
-	securityCode();
-
-
-	string PASS = password;
-	PASSWORD = PASS;
-
 }
 
 
@@ -255,21 +225,16 @@ void getInfo()
 
 
 
+	cout << "Welcome!\n";
+	cout << "Thank you for deciding to sign up!\n\n";
+	cout << "Please enter your first name: ";
 
-
-	cout << "\n\n <WELCOME! Thanks for deciding to sign up!>\n";
-	cout << " -----------------------------------------------\n";
-	cout << setw(23) << "\\  ^__^\n";
-	cout << setw(30) << "	\\ (oo)\_______\n";
-	cout << setw(34) << "(__)\       )\ / \ " << "\n";
-	cout << setw(32) << "    ||----m |  " << "\n";
-	cout << setw(32) << "  ||     ||`\n";
-	cout << "\nPlease enter your first name: ";
 
 	string fName;
 	cin >> fName;
 
 
+	while (fName.size() > NUM_LENGTH) // may take it off 
 
 	while (fName.size() > NUM_LENGTH) // may take it off
 
@@ -280,10 +245,15 @@ void getInfo()
 	}
 
 	cout << "Enter your last name: ";
+	
+	string lName;
+	cin >> lName;
+	
+
+	while (lName.size() > NUM_LENGTH) // may take it off 
 
 	string lName;
 	cin >> lName;
-
 
 
 	while (lName.size() > NUM_LENGTH) // may take it off
@@ -301,11 +271,13 @@ void getInfo()
 	cout << "Enter your phone number: ";
 
 	string phoneNumber;
-	getline(cin, phoneNumber);
-	string temp2 = phoneNumber;
-	PHONENUMBER == temp2;
+	cin >> phoneNumber;
+	
+	while (phoneNumber.size() > NUM_LENGTH) // may take it off 
 
-	/*while (phoneNumber.lenght() > NUM_LENGTH) // may take it off
+	string phoneNumber;
+	cin >> phoneNumber;
+	while (phoneNumber.size() > NUM_LENGTH) // may take it off
 
 
 	{
@@ -316,20 +288,12 @@ void getInfo()
 
 	}
 
-	*/
-
 	cout << "Enter your desired permanent username: ";
 	string username;
+	cin >> userName;
+	//thinking of having a restriction of max characters in a username
 
-	cin >> username;
-	string temp = username;
-
-	USERNAME = temp; //TEMPORAL VARIABLES FOR THE WINNNNN
-
-	//thinking of having a restriction of max characters in a username -FA
-
-
-
+	username = userName; // this is going to be a valauble way of using certain code such as changing passwords...
 
 
 	cout << "\nBefore we ask for your password, would you like to change any of the recent information?(y/n or any other character)\n";
@@ -347,10 +311,10 @@ void getInfo()
 	}
 	else getPassword();
 
+	
 
-
-
-
+	
+	
 
 
 
@@ -360,8 +324,8 @@ void getInfo()
 	myFile.open("user.txt", ios::out);
 	if (myFile.is_open()) {
 
-		myFile << fName << "\n" << lName << "\n" << phoneNumber << "\n" << username;
-
+			myFile << fName << "\n" << lName << "\n" << phoneNumber << "\n" << username;
+		
 
 
 
@@ -374,36 +338,3 @@ void getInfo()
 }
 
 
-void securityCode()
-{
-	cout << "\nHi, you will be asked to enter a 4-digit pin.\nThe pin is just in case you forget your password...\n ";
-	cout << "\n\nPlease enter your pin: ";
-	int pin;
-	cin >> pin;
-	cout << "Re-enter your pin: ";
-	int pin2;
-	cin >> pin2;
-
-
-
-	while (pin2 != pin)
-	{
-		cout << "The pins don't match!\n";
-		return getPin();
-	}
-	int temp = pin;
-	PIN = temp;
-
-}
-
-
-void getPin()
-{
-	cout << "\n\nPlease enter your pin: ";
-	int pin;
-	cin >> pin;
-	cout << "Re-enter your pin: ";
-	int pin2;
-	cin >> pin2;
-
-}
