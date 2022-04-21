@@ -19,6 +19,7 @@ void getLogin(){
 void validateLogin( string userName, string passWord){
     string s1;
     string s2;
+    string line;
     bool validate;
     ifstream inFile;
 
@@ -30,6 +31,7 @@ void validateLogin( string userName, string passWord){
     cout << "Please Enter your Password: ";
     cin >> passWord;
 
+    
     inFile.open("c//user.txt");
     
     if (inFile.fail()){
@@ -66,5 +68,6 @@ void validateLogin( string userName, string passWord){
         cout << "You have entered the wrong combinatation of username and password!";
         
     }
+    
 }
 }
