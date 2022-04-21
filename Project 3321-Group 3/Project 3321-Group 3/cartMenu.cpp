@@ -251,7 +251,7 @@ void updateQuantity() {
 //Function to add items in cart-Kris Ly
 void addItem() {
 	string designID, designName, itemID;
-	int quantity, addedQuantity;
+	double quantity, addedQuantity;
 	double price;
 	bool isValidID = false;			//variable to check if input item ID is valid
 	bool isInCart = false;			//variable to check if the item added has been in cart

@@ -1,4 +1,6 @@
 #pragma once
 //Function related to Reviews
 //Functions declaration
-//void printReviews();
+
+//FUnction to display review -Kris Ly
+void printReviews();

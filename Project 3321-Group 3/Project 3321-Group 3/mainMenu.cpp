@@ -14,25 +14,6 @@ using namespace std;
 
 
 
-void menuDesign()
-
-{
-	cout << "\n\n <WE SELL T-SHIRTS>\n";
-	cout << " --------------------\n";
-	cout << setw(23) << "\\  ^__^\n";
-
-	cout << setw(30) << "	\\ (oo)\_______\n";
-
-	cout << setw(30) << " \\ (oo)\_______\n";
-
-	cout << setw(34) << "(__)\       )\ / \ " << "\n";
-	cout << setw(32) << "    ||----m |  " << "\n";
-	cout << setw(32) << "  ||     ||`\n";
-
-
-
-}
-
 
 
 void printMainMenu() {
@@ -55,7 +36,7 @@ void printDetailMainMenu(int option) {
 	{
 	case 1:
 		cout << "Printing the login menu\n";
-		getLogin();
+		//getLogin();
 		break;
 	case 2:
 		signUp();

@@ -1,0 +1,5 @@
+DS01 TshirtXS	5.99		"5-star"
+DS02 TshirtS	7.99		"3-star"
+DS03 TshirtM	8.99		"4.5-star"
+DS04 TShirtL	10.99		"4-star"
+DS05 TShirtXL	12.99		"3.8-star"
