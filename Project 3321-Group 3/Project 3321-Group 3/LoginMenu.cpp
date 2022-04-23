@@ -51,10 +51,10 @@ void validateLogin(){
         cin >> c;
         
         if (c == 'a' || c == 'A'){
-        //printAdminMenu();
+        printAdminMenu();
         }
         else if (c == 'u' || c == 'U'){
-        //printUserMenu();
+        printUserMenu();
         }
         else {
             cout << "Invalid Choice";
