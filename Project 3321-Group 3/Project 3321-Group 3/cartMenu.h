@@ -25,3 +25,12 @@ void deleteItem();
 
 //Function to add items in cart-Kris Ly
 void addItem();
+
+//Function to check total price of item in cart in USD-Kris Ly
+double checkTotalUSD();
+
+//Function to check total price of item in cart-Kris Ly
+double checkTotalCAD();
+
+//Function to check total price of item in cart-Kris Ly
+double checkTotalEUR();

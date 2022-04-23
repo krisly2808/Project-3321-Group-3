@@ -7,6 +7,12 @@
 #include <iomanip>  
 
 using namespace std;
+
+//RATIO to exchange USD to CAD and EUR
+const double USDCAD = 1.27;
+const double USDEUR = 0.93;
+
+
 //Function to print cart menu-Kris Ly
 void printCartMenu() {
 	cout << "Please select you option from the list below:\n ";
@@ -64,7 +70,7 @@ void viewCart() {
 			total += price;
 			cout << "   " << designID << "\t"<<setw(20) << designName <<"\t\t"<< quantity<<"\t\t" << price << endl;
 		}
-		cout << "\tTotal price is: " << total << endl;
+		cout << "\tTotal price is: " << total <<" in USD." << endl;
 		myFile.close();
 	}
 }
@@ -345,4 +351,34 @@ void addItem() {
 
 	//Prompt the error if input item ID not match
 	else { cout << "Your input itemID is not match with any items that we carry.\n"; }
+}
+
+//Function to check total price of item in cart in USD-Kris Ly
+double checkTotalUSD() {
+	//open "cart.txt" to display all items in cart
+	fstream myFile;
+	myFile.open("cart.txt", ios::in);
+
+	//Iterate throught "cart.txt" to display items on screen
+	if (myFile.is_open()) {
+		string designID, designName;
+		int quantity;
+		double price;
+		double total = 0.0;
+		while (myFile >> designID && myFile >> designName && myFile >> quantity && myFile >> price) {
+			total += price;
+		}
+		myFile.close();
+		return total;
+	}
+}
+
+//Function to check total price of item in cart-Kris Ly
+double checkTotalCAD() {
+	return checkTotalUSD()*USDCAD;
+};
+
+//Function to check total price of item in cart-Kris Ly
+double checkTotalEUR() {
+	return checkTotalUSD() * USDEUR;
 }

@@ -2,10 +2,6 @@
 #include "LoginMenu.h"
 #include "UserMenu.h"
 
-void getLogin();
-void validateLogin();
-
-
 string userName;
 string passWord;
 bool validate;
@@ -16,7 +12,7 @@ void getLogin(){
 }
 
 
-void validateLogin( string userName, string passWord){
+void validateLogin(){
     string s1;
     string s2;
     string line;
@@ -55,18 +51,17 @@ void validateLogin( string userName, string passWord){
         cin >> c;
         
         if (c == 'a' || c == 'A'){
-        printAdminMenu();
+        //printAdminMenu();
         }
         else if (c == 'u' || c == 'U'){
-        printUserMenu();
+        //printUserMenu();
         }
         else {
             cout << "Invalid Choice";
         }
     }
     else {
-        cout << "You have entered the wrong combinatation of username and password!";
-        
+        cout << "You have entered the wrong combinatation of username and password!";   
     }
     
 }
