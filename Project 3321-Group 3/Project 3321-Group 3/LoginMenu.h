@@ -9,5 +9,4 @@ using namespace std;
 
 void getLogin();
 
-
-void validateLogin(string, string);
+void validateLogin();

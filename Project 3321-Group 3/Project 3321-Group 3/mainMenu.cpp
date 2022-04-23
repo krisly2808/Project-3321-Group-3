@@ -11,11 +11,6 @@ using namespace std;
 //
 //Function to print the main menu for all users to input choice-Kris Ly
 
-
-
-
-
-
 void printMainMenu() {
 
 	menuDesign();
