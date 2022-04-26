@@ -25,6 +25,7 @@ void validateLogin(){
     string s1;
     string s2;
     int userCard;
+    int addressNum;
     string line;
     bool member;
     ifstream inFile;
@@ -44,9 +45,11 @@ void validateLogin(){
         cout << "File Open Error";
     }
 
-    inFile >> admin >> s1 >> s2 >> userCard >> line >> member;
-    admin = isAdmin;
-
+    inFile >> admin >> s1 >> s2 >> userCard >> addressNum >> line >> member;
+    isAdmin = admin;
+    cardNum = userCard;
+    address = std::to_string(addressNum) + " " + line;
+    isMember = member;
     
 
     inFile.close();
@@ -76,8 +79,66 @@ void validateLogin(){
       printAdminMenu();
   }  
 }
-void updatePaymentInfo(int card, string address, bool member){
+void updatePaymentInfo(int c, string a, bool m){
+
+    int choice;
     
+    cout << "Here is your current personal information:";
+    cout << "1. Card number: " << c << endl;
+    cout << "2. Current address: " << a <<endl;
+    cout << "3. Member status: " << m << endl;
+    cout << "What would you like to update? (1, 2, or 3)";
+    cin >> choice;
+
+    while ( choice <= 0 || choice > 3){
+        char r;
+        switch(choice){
+            case 1:
+            cout << "Please enter your updated credit card number: ";
+            cin >> c;
+            cout << "Your credit card number has been saved! Would you like to update anymore information? y/n";
+            cin >> r;
+            if (r == 'y' || r == 'Y'){
+                updatePaymentInfo(c,a,m);
+            }else {
+                printUserMenu();
+                break;
+            }
+
+            case 2:
+            cout<< "Please enter your current address: ";
+            cin >> c;
+            cout << "Your current address has been saved! Would you like to update anymore information? y/n";
+            cin >> r;
+            if (r == 'y' || r == 'Y'){
+                updatePaymentInfo(c,a,m);
+            }else {
+                printUserMenu();
+                break;
+            }
+
+            case 3:
+            cout << "Are you sure you would like to change your member status from " << m << " to " << !m << "? y/n" << endl;
+            cin >> r;
+            if (r == 'y' || r == 'Y'){
+                bool temp;
+                temp = !m;
+                m = temp;
+                cout << "Okay! Your member status has been changed to " << m << endl;
+            }else {
+                cout << "Okay! Your member status will remain " << m << endl;
+            }
+            cout << "Your member status has been saved! Would you like to update anymore information? y/n";
+            if (r == 'y' || r == 'Y'){
+                updatePaymentInfo(c,a,m);
+            }else {
+                printUserMenu();
+                break;
+            }
+        }
+    }
+    
+
 
 
    
