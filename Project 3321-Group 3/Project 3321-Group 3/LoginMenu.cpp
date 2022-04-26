@@ -2,26 +2,34 @@
 #include "LoginMenu.h"
 #include "UserMenu.h"
 
+
+bool isAdmin = false;
 string userName;
 string passWord;
-bool validate;
+int cardNum;
+string address;
+bool isMember = false;
+bool validate = false;
 
-
+//Amani - Login menu
 void getLogin(){
     validateLogin();
+    
 }
 
-void printAdminMenu() {}
-void printUserMenu() {}
+
 
 void validateLogin(){
+    
+    bool admin;
     string s1;
     string s2;
+    int userCard;
     string line;
-    bool validate;
+    bool member;
     ifstream inFile;
 
-    while (true){
+    while (validate == false){
 
     cout << "Welcome Back! \n\n";
     cout << "Please Enter your Username: ";
@@ -36,7 +44,10 @@ void validateLogin(){
         cout << "File Open Error";
     }
 
-    inFile >> s1 >> s2;
+    inFile >> admin >> s1 >> s2 >> userCard >> line >> member;
+    admin = isAdmin;
+
+    
 
     inFile.close();
 
@@ -46,25 +57,35 @@ void validateLogin(){
     else {
         validate = false;
     }
-    //return validate;
-    if (validate == true){
-        char c;
-        cout << "Please type 'a' if you are an Admin and 'u' if you are a User";
-        cin >> c;
-        
-        if (c == 'a' || c == 'A'){
-        printAdminMenu();
-        }
-        else if (c == 'u' || c == 'U'){
-        printUserMenu();
-        }
-        else {
-            cout << "Invalid Choice";
-        }
-    }
-    else {
-        cout << "You have entered the wrong combinatation of username and password!";   
-    }
-    
+   
 }
+ while (validate == true && isAdmin == false){
+        char r;
+        cout << "Hello " + userName;
+        cout << "Would you like to update your saved information? y/n";
+        cin >> r;
+
+        if(r == 'y' || r =='Y'){
+           updatePaymentInfo(cardNum, address, isMember);
+        }
+        else if (r == 'n' || r == 'N'){
+            printUserMenu();
+        }
+    }
+  while (validate == true && isAdmin == true){
+      printAdminMenu();
+  }  
+}
+void updatePaymentInfo(int card, string address, bool member){
+    
+
+
+   
+
+
+    
+   
+
+
+
 }

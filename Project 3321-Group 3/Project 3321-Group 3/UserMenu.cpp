@@ -26,7 +26,7 @@ void printDetailsUserMenu(int option){
         break;
 
         case 3:
-        //reviewsMenu
+        printReviews();
         break;
 
         case 4:
