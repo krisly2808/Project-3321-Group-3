@@ -10,8 +10,11 @@ int cardNum;
 string address;
 bool isMember = false;
 bool validate = false;
-
+ifstream inFile;
 //Amani - Login menu
+
+
+
 void getLogin(){
     validateLogin();
     
@@ -28,7 +31,7 @@ void validateLogin(){
     int addressNum;
     string line;
     bool member;
-    ifstream inFile;
+    
 
     while (validate == false){
 
@@ -77,7 +80,8 @@ void validateLogin(){
     }
   while (validate == true && isAdmin == true){
       printAdminMenu();
-  }  
+  } 
+
 }
 void updatePaymentInfo(int c, string a, bool m){
 
@@ -97,6 +101,7 @@ void updatePaymentInfo(int c, string a, bool m){
             cout << "Please enter your updated credit card number: ";
             cin >> c;
             cout << "Your credit card number has been saved! Would you like to update anymore information? y/n";
+            cardNum = c;
             cin >> r;
             if (r == 'y' || r == 'Y'){
                 updatePaymentInfo(c,a,m);
@@ -106,9 +111,10 @@ void updatePaymentInfo(int c, string a, bool m){
             }
 
             case 2:
-            cout<< "Please enter your current address: ";
-            cin >> c;
+            cout<< "Please enter your updated address: ";
+            cin >> a;
             cout << "Your current address has been saved! Would you like to update anymore information? y/n";
+            address = a;
             cin >> r;
             if (r == 'y' || r == 'Y'){
                 updatePaymentInfo(c,a,m);
@@ -128,6 +134,7 @@ void updatePaymentInfo(int c, string a, bool m){
             }else {
                 cout << "Okay! Your member status will remain " << m << endl;
             }
+            isMember = m;
             cout << "Your member status has been saved! Would you like to update anymore information? y/n";
             if (r == 'y' || r == 'Y'){
                 updatePaymentInfo(c,a,m);
@@ -137,16 +144,12 @@ void updatePaymentInfo(int c, string a, bool m){
             }
         }
     }
-    
-
-
-
    
-
-
-    
-   
-
-
+    fstream newFile;
+    newFile.open("user.txt", ios::out);
+    if (newFile.is_open()){
+    newFile << isAdmin << userName << passWord << cardNum << address << isMember;
+    newFile.close();
+}
 
 }

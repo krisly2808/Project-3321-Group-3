@@ -5,10 +5,12 @@
 #include <fstream>
 using namespace std;
 
-
+//Functions for Login screen
 
 void getLogin();
 
+
 void validateLogin();
-void printAdminMenu() ;
-void printUserMenu();
+
+
+void updatePaymentInfo(int, string, bool);
