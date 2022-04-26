@@ -15,11 +15,6 @@ void getPassword();
 void passPassword();
 
 
-
-
-
-string userName;
-
 const int NUM_LENGTH = 10;
 
 
@@ -199,7 +194,7 @@ void getPassword()
 	if (password == cPassword)
 	{
 
-		cout << "\nWelcome " << userName << "!\n" << "Your account has been created. Thank you! \n\n";
+		cout << "\nWelcome " << "!\n" << "Your account has been created. Thank you! \n\n";
 
 	}
 	if (password != cPassword)
@@ -290,11 +285,8 @@ void getInfo()
 
 	cout << "Enter your desired permanent username: ";
 	string username;
-	cin >> userName;
+	cin >> username;
 	//thinking of having a restriction of max characters in a username
-
-	username = userName; // this is going to be a valauble way of using certain code such as changing passwords...
-
 
 	cout << "\nBefore we ask for your password, would you like to change any of the recent information?(y/n or any other character)\n";
 	char c;

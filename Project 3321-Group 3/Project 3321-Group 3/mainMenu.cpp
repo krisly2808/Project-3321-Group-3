@@ -31,7 +31,7 @@ void printDetailMainMenu(int option) {
 	{
 	case 1:
 		cout << "Printing the login menu\n";
-		//getLogin();
+		getLogin();
 		break;
 	case 2:
 		signUp();
