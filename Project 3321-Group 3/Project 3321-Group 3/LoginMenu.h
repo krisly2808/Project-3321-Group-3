@@ -10,3 +10,5 @@ using namespace std;
 void getLogin();
 
 void validateLogin();
+void printAdminMenu() ;
+void printUserMenu();

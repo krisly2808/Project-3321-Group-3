@@ -11,6 +11,8 @@ void getLogin(){
     validateLogin();
 }
 
+void printAdminMenu() {}
+void printUserMenu() {}
 
 void validateLogin(){
     string s1;
