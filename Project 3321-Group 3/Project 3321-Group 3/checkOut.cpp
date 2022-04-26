@@ -38,7 +38,7 @@ void userCheckout() {
 
 //Function for guest checkout-Kris Ly
 void guestCheckout() {
-	
+	system("CLS");
 	char choice;
 	string name, address, designID, designName, cardNo;
 	double quantity, price;

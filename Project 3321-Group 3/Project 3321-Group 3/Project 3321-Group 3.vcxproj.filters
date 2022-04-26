@@ -9,6 +9,7 @@
     <ClCompile Include="signup.cpp" />
     <ClCompile Include="review.cpp" />
     <ClCompile Include="checkOut.cpp" />
+    <ClCompile Include="LoginMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cartMenu.h" />
@@ -18,5 +19,6 @@
     <ClInclude Include="reviews.h" />
     <ClInclude Include="signup.h" />
     <ClInclude Include="checkOut.h" />
+    <ClInclude Include="LoginMenu.h" />
   </ItemGroup>
 </Project>
