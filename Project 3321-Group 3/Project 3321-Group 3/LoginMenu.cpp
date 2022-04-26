@@ -2,26 +2,35 @@
 #include "LoginMenu.h"
 #include "UserMenu.h"
 
+
+bool isAdmin = false;
 string userName;
 string passWord;
-bool validate;
+int cardNum;
+string address;
+bool isMember = false;
+bool validate = false;
 
-
+//Amani - Login menu
 void getLogin(){
     validateLogin();
+    
 }
 
-void printAdminMenu() {}
-void printUserMenu() {}
+
 
 void validateLogin(){
+    
+    bool admin;
     string s1;
     string s2;
+    int userCard;
+    int addressNum;
     string line;
-    bool validate;
+    bool member;
     ifstream inFile;
 
-    while (true){
+    while (validate == false){
 
     cout << "Welcome Back! \n\n";
     cout << "Please Enter your Username: ";
@@ -36,7 +45,12 @@ void validateLogin(){
         cout << "File Open Error";
     }
 
-    inFile >> s1 >> s2;
+    inFile >> admin >> s1 >> s2 >> userCard >> addressNum >> line >> member;
+    isAdmin = admin;
+    cardNum = userCard;
+    address = std::to_string(addressNum) + " " + line;
+    isMember = member;
+    
 
     inFile.close();
 
@@ -46,25 +60,93 @@ void validateLogin(){
     else {
         validate = false;
     }
-    //return validate;
-    if (validate == true){
-        char c;
-        cout << "Please type 'a' if you are an Admin and 'u' if you are a User";
-        cin >> c;
-        
-        if (c == 'a' || c == 'A'){
-        printAdminMenu();
+   
+}
+ while (validate == true && isAdmin == false){
+        char r;
+        cout << "Hello " + userName;
+        cout << "Would you like to update your saved information? y/n";
+        cin >> r;
+
+        if(r == 'y' || r =='Y'){
+           updatePaymentInfo(cardNum, address, isMember);
         }
-        else if (c == 'u' || c == 'U'){
-        printUserMenu();
-        }
-        else {
-            cout << "Invalid Choice";
+        else if (r == 'n' || r == 'N'){
+            printUserMenu();
         }
     }
-    else {
-        cout << "You have entered the wrong combinatation of username and password!";   
+  while (validate == true && isAdmin == true){
+      printAdminMenu();
+  }  
+}
+void updatePaymentInfo(int c, string a, bool m){
+
+    int choice;
+    
+    cout << "Here is your current personal information:";
+    cout << "1. Card number: " << c << endl;
+    cout << "2. Current address: " << a <<endl;
+    cout << "3. Member status: " << m << endl;
+    cout << "What would you like to update? (1, 2, or 3)";
+    cin >> choice;
+
+    while ( choice <= 0 || choice > 3){
+        char r;
+        switch(choice){
+            case 1:
+            cout << "Please enter your updated credit card number: ";
+            cin >> c;
+            cout << "Your credit card number has been saved! Would you like to update anymore information? y/n";
+            cin >> r;
+            if (r == 'y' || r == 'Y'){
+                updatePaymentInfo(c,a,m);
+            }else {
+                printUserMenu();
+                break;
+            }
+
+            case 2:
+            cout<< "Please enter your current address: ";
+            cin >> c;
+            cout << "Your current address has been saved! Would you like to update anymore information? y/n";
+            cin >> r;
+            if (r == 'y' || r == 'Y'){
+                updatePaymentInfo(c,a,m);
+            }else {
+                printUserMenu();
+                break;
+            }
+
+            case 3:
+            cout << "Are you sure you would like to change your member status from " << m << " to " << !m << "? y/n" << endl;
+            cin >> r;
+            if (r == 'y' || r == 'Y'){
+                bool temp;
+                temp = !m;
+                m = temp;
+                cout << "Okay! Your member status has been changed to " << m << endl;
+            }else {
+                cout << "Okay! Your member status will remain " << m << endl;
+            }
+            cout << "Your member status has been saved! Would you like to update anymore information? y/n";
+            if (r == 'y' || r == 'Y'){
+                updatePaymentInfo(c,a,m);
+            }else {
+                printUserMenu();
+                break;
+            }
+        }
     }
     
-}
+
+
+
+   
+
+
+    
+   
+
+
+
 }
