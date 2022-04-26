@@ -358,19 +358,19 @@ double checkTotalUSD() {
 	//open "cart.txt" to display all items in cart
 	fstream myFile;
 	myFile.open("cart.txt", ios::in);
-
+	double total = 0.0;
 	//Iterate throught "cart.txt" to display items on screen
 	if (myFile.is_open()) {
 		string designID, designName;
 		int quantity;
 		double price;
-		double total = 0.0;
+		
 		while (myFile >> designID && myFile >> designName && myFile >> quantity && myFile >> price) {
 			total += price;
 		}
 		myFile.close();
-		return total;
-	}
+	} 
+	return total;
 }
 
 //Function to check total price of item in cart-Kris Ly
