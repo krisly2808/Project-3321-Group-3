@@ -13,7 +13,7 @@ using namespace std;
 
 void printMainMenu() {
 
-	menuDesign();
+	//menuDesign();
 	cout << "\n\nPlease select you option from the list below:\n ";
 	cout << "\t1. Login.\n ";
 	cout << "\t2. Sign-up as User.\n ";
@@ -32,6 +32,7 @@ void printDetailMainMenu(int option) {
 	case 1:
 		cout << "Printing the login menu\n";
 		getLogin();
+
 		break;
 	case 2:
 		signUp();
