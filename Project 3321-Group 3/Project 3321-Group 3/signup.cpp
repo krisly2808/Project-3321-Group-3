@@ -5,22 +5,28 @@
 #include <string>
 #include <fstream>
 #include <vector>
-//FA 
+// Francisco Alfaro -> I worked on all the functions in this file and signup.h 
+// all the comments are made by me so that the code can be understood 
+
 using namespace std;
 
-void forgotPassword();
-void getInfo();
+void forgotPassword(); //this is the function that allows the user to get their password back 
+void getInfo(); // gets the information from a new user 
 void changePersonalInfo(string fName, string lName, string phoneNumber);
-void getPassword();
-void passPassword();
-void securityCode();
+void getPassword(); //function called in getInfo() that gets the password from the user, it is called within itself if password dont match while 
+//asking to re-enter 
+void passPassword(); //this function is to pass the password so it can be used as a global variable and be passed onto the file 
+void securityCode(); //this function is to obtain a security pin from the user just in case the password is forgotten. It is called
+// in forgotPassword() 
 
 
 
-
+//global variables used along with temporal variables to pass data onto a txt file 
 string USERNAME;
 string PASSWORD;
 string PHONENUMBER;
+string ADDRESS;
+string CREDITCARD;
 int PIN;
 
 const int NUM_LENGTH = 10;
@@ -32,12 +38,14 @@ void menuDesign()
 
 
 {
-	const char TB = '\xCD'; // 205
-	const char LR = '\xBA'; // 186
-	const char TL = '\xC9'; // 201
-	const char TR = '\xBB'; // 187
-	const char BL = '\xC8'; // 200
-	const char BR = '\xBC'; // 188
+	//reused from the internet 
+
+	const char TB = '\xCD';
+	const char LR = '\xBA';
+	const char TL = '\xC9';
+	const char TR = '\xBB';
+	const char BL = '\xC8';
+	const char BR = '\xBC';
 	cout << "\n";
 	string title = "WE SELL T-SHIRTS";
 	string margin = "  ";
@@ -46,7 +54,6 @@ void menuDesign()
 	cout << setw(11) << LR << margin << title << margin << LR << endl;
 	cout << setw(11) << BL << line << BR << endl;
 	cout << endl;
-
 	/*
 	cout << "\n\n <WE SELL T-SHIRTS>\n";
 
@@ -61,27 +68,9 @@ void menuDesign()
 	*/
 }
 
+//separated everything into different functions for simplicity 
 
-/* cute box design
-const char TB = '\xCD'; // 205
-	const char LR = '\xBA'; // 186
-	const char TL = '\xC9'; // 201
-	const char TR = '\xBB'; // 187
-	const char BL = '\xC8'; // 200
-	const char BR = '\xBC'; // 188
-
-	string hello = "Hello World!";
-	string margin = "  ";
-	string line(hello.length() + 2 * margin.length(), TB);
-
-	cout << TL << line << TR << endl;
-	cout << LR << margin << hello << margin << LR << endl;
-	cout << BL << line << BR << endl;
-	cout << endl;
-
-
-*/
-void signUp()
+void signUp() //this is the function called from mainMenu.cpp to display everything in this file 
 {
 
 
@@ -105,7 +94,7 @@ void forgotPassword()
 
 	\
 		cout << "\n\n <HI! I remember you!>\n";
-
+	//just a design for the specific part of the menu 
 	cout << " --------------------\n";
 	cout << setw(23) << "\\  ^__^\n";
 	cout << setw(30) << "	\\ (oo)\_______\n";
@@ -119,7 +108,7 @@ void forgotPassword()
 
 
 
-	cout << "\nPlease input your pin: ";
+	cout << "\nPlease input your pin: "; //takes the pin from the user who just created their account just in case they forgot it 
 
 	int pin;
 	cin >> pin;
@@ -139,7 +128,8 @@ void forgotPassword()
 }
 
 
-void passPassword()
+void passPassword() //this function is used to read and pass the password to the passedPassword.txt and so that the user can 
+//obtain their password ...It basically reveals their password after asking the user for specific details . 
 {
 
 
@@ -173,7 +163,8 @@ void passPassword()
 
 }
 
-void changePersonalInfo(string fName, string lName, string phoneNumber)
+void changePersonalInfo(string fName, string lName, string phoneNumber) //this function is just in case the user makes a mistake and wants to change 
+// a part of their recent inputs 
 {
 	cout << "\nThis is your current information:\n";
 	cout << "1. First name: " << fName << endl;
@@ -227,7 +218,7 @@ void changePersonalInfo(string fName, string lName, string phoneNumber)
 
 
 }
-void getPassword()
+void getPassword() //this function gets the password from the user, it is called within it just in case passwords asked for don't match 
 {
 	cout << "Enter your desired password: ";
 	string password;
@@ -242,7 +233,8 @@ void getPassword()
 	if (password == cPassword)
 	{
 
-		cout << "\nWelcome " << USERNAME << "!\n" << "Your account has been created. Thank you! \n\n";
+		cout << "\nWelcome " << USERNAME << "!\n" << "Your account has been created. Thank you! \nHowever, we need your credit card"
+			<< " information and address so you can safely shop in our store!\n\n";
 
 	}
 	if (password != cPassword)
@@ -259,9 +251,31 @@ void getPassword()
 		myFile.close();
 	}
 
-	cout << "\nHi, you will be asked to enter a 4-digit pin.\nThe pin is just in case you forget your password...\n ";
-	securityCode();
 
+
+	string address;
+	string creditCardNumber;
+
+
+	cout << "Enter your credit card number: ";
+	cin >> creditCardNumber;
+	cin.ignore();
+	string tempccn = creditCardNumber; //temp variable to store the credit card number to be accessed by the fuction that will read the infomation 
+	CREDITCARD = tempccn;
+	cin.clear();
+
+
+	cout << "Enter your address: ";
+	getline(cin, address);
+
+	string tempAdress = address; //temp variable to store the address to be accessed by the fuction that will read the infomation 
+	ADDRESS = address;
+	cin.clear();
+
+
+
+	cout << "\nHi, you will be asked to enter a pin.(any length)\nThe pin is just in case you forget your password...\n ";
+	securityCode();
 
 	string PASS = password;
 	PASSWORD = PASS;
@@ -269,7 +283,7 @@ void getPassword()
 }
 
 
-void getInfo()
+void getInfo() //this function is to obtain the details from the new user 
 {
 
 
@@ -290,7 +304,7 @@ void getInfo()
 
 
 
-	while (fName.size() > NUM_LENGTH) // may take it off
+	while (fName.size() > NUM_LENGTH)
 
 
 	{
@@ -305,7 +319,7 @@ void getInfo()
 
 
 
-	while (lName.size() > NUM_LENGTH) // may take it off
+	while (lName.size() > NUM_LENGTH)
 
 
 	{
@@ -324,18 +338,6 @@ void getInfo()
 	string temp2 = phoneNumber;
 	PHONENUMBER == temp2;
 
-	/*while (phoneNumber.lenght() > NUM_LENGTH) // may take it off
-
-
-	{
-		cin.clear();
-
-		cout << "Please re-enter your phone number: ";
-		cin >> phoneNumber;
-
-	}
-
-	*/
 
 	cout << "Enter your desired permanent username: ";
 	string username;
@@ -345,7 +347,6 @@ void getInfo()
 
 	USERNAME = temp; //TEMPORAL VARIABLES FOR THE WINNNNN
 
-	//thinking of having a restriction of max characters in a username -FA
 
 
 
@@ -370,16 +371,11 @@ void getInfo()
 
 
 
-
-
-
-
-
 	fstream myFile;
 	myFile.open("user.txt", ios::out);
 	if (myFile.is_open()) {
 
-		myFile << fName << "\n" << lName << "\n" << phoneNumber << "\n" << username;
+		myFile << username << "\n" << PASSWORD << "\n" << fName << "\n" << lName << "\n" << CREDITCARD << "\n" << ADDRESS;
 
 
 
@@ -393,7 +389,7 @@ void getInfo()
 }
 
 
-void securityCode()
+void securityCode() // gets security pin from user just in case password is forgotten . 
 {
 	cout << "\n\nPlease enter your pin: ";
 	int pin;
@@ -413,5 +409,3 @@ void securityCode()
 	PIN = temp;
 
 }
-
-

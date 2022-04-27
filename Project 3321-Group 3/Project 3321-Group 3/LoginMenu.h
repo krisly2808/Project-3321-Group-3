@@ -14,4 +14,4 @@ void validateLogin();
 void printUserMenu();
 void printAdminMenu();
 
-void updatePaymentInfo(int, string, bool);
+void updatePaymentInfo(int, string);
