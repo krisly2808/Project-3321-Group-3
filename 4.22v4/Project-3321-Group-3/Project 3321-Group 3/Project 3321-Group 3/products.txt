@@ -1,5 +1,0 @@
-DS01 TshirtXS	5.99
-DS02 TshirtS	7.99
-DS03 TshirtM	8.99
-DS04 TShirtL	10.99
-DS05 TShirtXL	12.99
