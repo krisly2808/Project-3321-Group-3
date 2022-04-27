@@ -24,8 +24,6 @@ void getLogin(){
     
 }
 
-void printUserMenu() {};
-void printAdminMenu() {};
 
 void validateLogin(){
     
