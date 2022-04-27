@@ -1,8 +1,11 @@
-false userN passWord 1234123412341234 123 Address true 
+userN 
+passWord 
+1234123412341234 
+Amani 
+Harrison 
+123 Address 
 
-true adminN passWord  
-
-
+(username) (password) (credit info) (first and last name)(address) 
 
 Francisco
 Alfaro
