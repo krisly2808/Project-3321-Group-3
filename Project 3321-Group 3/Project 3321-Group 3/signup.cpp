@@ -14,7 +14,6 @@ void changePersonalInfo(string fName, string lName, string phoneNumber);
 void getPassword();
 void passPassword();
 void securityCode();
-void getPin();
 
 
 
@@ -33,6 +32,22 @@ void menuDesign()
 
 
 {
+	const char TB = '\xCD'; // 205
+	const char LR = '\xBA'; // 186
+	const char TL = '\xC9'; // 201
+	const char TR = '\xBB'; // 187
+	const char BL = '\xC8'; // 200
+	const char BR = '\xBC'; // 188
+	cout << "\n";
+	string title = "WE SELL T-SHIRTS";
+	string margin = "  ";
+	string line(title.length() + 2 * margin.length(), TB);
+	cout << setw(11) << TL << line << TR << endl;
+	cout << setw(11) << LR << margin << title << margin << LR << endl;
+	cout << setw(11) << BL << line << BR << endl;
+	cout << endl;
+
+	/*
 	cout << "\n\n <WE SELL T-SHIRTS>\n";
 
 	cout << " --------------------\n";
@@ -41,6 +56,9 @@ void menuDesign()
 	cout << setw(34) << "(__)\       )\ / \ " << "\n";
 	cout << setw(32) << "    ||----m |  " << "\n";
 	cout << setw(32) << "  ||     ||`\n";
+
+
+	*/
 }
 
 
@@ -241,7 +259,7 @@ void getPassword()
 		myFile.close();
 	}
 
-
+	cout << "\nHi, you will be asked to enter a 4-digit pin.\nThe pin is just in case you forget your password...\n ";
 	securityCode();
 
 
@@ -377,7 +395,6 @@ void getInfo()
 
 void securityCode()
 {
-	cout << "\nHi, you will be asked to enter a 4-digit pin.\nThe pin is just in case you forget your password...\n ";
 	cout << "\n\nPlease enter your pin: ";
 	int pin;
 	cin >> pin;
@@ -387,10 +404,10 @@ void securityCode()
 
 
 
-	while (pin2 != pin)
+	if (pin2 != pin)
 	{
 		cout << "The pins don't match!\n";
-		return getPin();
+		return securityCode();
 	}
 	int temp = pin;
 	PIN = temp;
@@ -398,13 +415,3 @@ void securityCode()
 }
 
 
-void getPin()
-{
-	cout << "\n\nPlease enter your pin: ";
-	int pin;
-	cin >> pin;
-	cout << "Re-enter your pin: ";
-	int pin2;
-	cin >> pin2;
-
-}

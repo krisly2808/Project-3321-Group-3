@@ -13,7 +13,7 @@ using namespace std;
 
 void printMainMenu() {
 
-	//menuDesign();
+	menuDesign();
 	cout << "\n\nPlease select you option from the list below:\n ";
 	cout << "\t1. Login.\n ";
 	cout << "\t2. Sign-up as User.\n ";
