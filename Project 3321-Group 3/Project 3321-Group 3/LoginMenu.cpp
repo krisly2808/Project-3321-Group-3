@@ -14,7 +14,7 @@ string address;
 bool isAdmin = false;
 bool validate = false;
 ifstream userFile;
-ifstream adminFile ("admin.txt", ios::in);
+ifstream adminFile;
 //Amani - Login menu
 
 
@@ -24,8 +24,6 @@ void getLogin(){
     
 }
 
-void printUserMenu() {};
-void printAdminMenu() {};
 
 void validateLogin(){
     
@@ -52,16 +50,14 @@ void validateLogin(){
     if (userFile.is_open()){
     
     string s;
-    while (std::getline(userFile, s, '\n')){
+         while (userFile>>s1&& userFile >> s2 && userFile >> userCard && userFile >> first && userFile >> last && userFile >> addressNum && userFile >> addressLine){
 
-    userFile >> s1 >> s2 >> userCard >> addressNum >> addressLine ;
-    cardNum = userCard;
-    address = std::to_string(addressNum) + " " + addressLine;
-   
-    
-
-    userFile.close();
-    }
+  //  userFile >> s1 >> s2 >> userCard >>first>>last>> addressNum >> addressLine ;
+         cardNum = userCard;
+         address = std::to_string(addressNum) + " " + addressLine;
+ 
+         userFile.close();
+          }
     if ((s1 == userName) && (s2 == passWord)){
         validate = true;
         isAdmin = false;
@@ -69,8 +65,8 @@ void validateLogin(){
     else if (validate == false){
 
         adminFile.open("admin.txt", ios::in);
-        while(std::getline(adminFile, s, '\n')){
-            adminFile >> s1 >> s2;
+        while(adminFile >> s1 >> s2){
+            //adminFile >> s1 >> s2;
             adminFile.close();
         }
         if((s1 == userName) && (s2 == passWord)){

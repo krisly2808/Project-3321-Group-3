@@ -1,15 +1,6 @@
-userN 
-passWord 
-1234123412341234 
-Amani 
-Harrison 
-123 Address 
-
-(username) (password) (credit info) (first and last name)(address) 
-
-Francisco
-Alfaro
-3462821804
-relegated
-
-
+kris
+1234
+kris
+ly
+1234567891123456
+1main st

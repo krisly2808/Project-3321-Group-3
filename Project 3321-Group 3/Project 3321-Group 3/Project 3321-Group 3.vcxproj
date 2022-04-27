@@ -139,25 +139,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AM.cpp" />
+    <ClCompile Include="artMenu.cpp" />
     <ClCompile Include="cartMenu.cpp" />
     <ClCompile Include="checkOut.cpp" />
     <ClCompile Include="LoginMenu.cpp" />
     <ClCompile Include="mainMenu.cpp" />
+    <ClCompile Include="orderMenu.cpp" />
     <ClCompile Include="Project 3321-Group 3.cpp" />
     <ClCompile Include="guestMenu.cpp" />
     <ClCompile Include="products.cpp" />
     <ClCompile Include="review.cpp" />
     <ClCompile Include="signup.cpp" />
+    <ClCompile Include="UserMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AM.h" />
+    <ClInclude Include="artMenu.h" />
     <ClInclude Include="cartMenu.h" />
     <ClInclude Include="checkOut.h" />
     <ClInclude Include="guestMenu.h" />
     <ClInclude Include="LoginMenu.h" />
     <ClInclude Include="mainMenu.h" />
+    <ClInclude Include="ordersMenu.h" />
     <ClInclude Include="products.h" />
     <ClInclude Include="reviews.h" />
     <ClInclude Include="signup.h" />
+    <ClInclude Include="UserMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

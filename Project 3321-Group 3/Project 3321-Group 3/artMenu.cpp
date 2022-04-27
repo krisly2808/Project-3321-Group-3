@@ -1,6 +1,5 @@
 #include "artMenu.h"
 
-
 void viewArtMenu(){
 
     cout << "========= Art and Word Bank =========";
