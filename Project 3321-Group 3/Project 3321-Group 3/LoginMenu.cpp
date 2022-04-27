@@ -67,10 +67,11 @@ void validateLogin(){
         isAdmin = false;
     }
     else if (validate == false){
+
         adminFile.open("admin.txt", ios::in);
         while(std::getline(adminFile, s, '\n')){
             adminFile >> s1 >> s2;
-
+            adminFile.close();
         }
         if((s1 == userName) && (s2 == passWord)){
             validate = true;
@@ -81,6 +82,7 @@ void validateLogin(){
 
     } else {
         validate = false;
+        cout << "This information is not valid";
     }
   }
 }
