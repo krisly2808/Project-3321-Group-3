@@ -2,6 +2,8 @@
 #include "LoginMenu.h"
 #include "UserMenu.h"
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 
@@ -11,6 +13,7 @@ int cardNum;
 string fname;
 string lname;
 string address;
+int phone;
 bool isAdmin = false;
 bool validate = false;
 ifstream userFile;
@@ -35,6 +38,7 @@ void validateLogin(){
     string last;
     int addressNum;
     string addressLine;
+    int phoneNum;
   
     
 
@@ -50,12 +54,12 @@ void validateLogin(){
     if (userFile.is_open()){
     
     string s;
-         while (userFile>>s1&& userFile >> s2 && userFile >> userCard && userFile >> first && userFile >> last && userFile >> addressNum && userFile >> addressLine){
+         while (userFile>>s1&& userFile >> s2 && userFile >> userCard && userFile >> first && userFile >> last && userFile >> addressNum && userFile >> addressLine >> phoneNum){
 
   //  userFile >> s1 >> s2 >> userCard >>first>>last>> addressNum >> addressLine ;
          cardNum = userCard;
          address = std::to_string(addressNum) + " " + addressLine;
- 
+         phone = phoneNum;   
          userFile.close();
           }
     if ((s1 == userName) && (s2 == passWord)){
@@ -83,7 +87,7 @@ void validateLogin(){
   }
 }
 
- while (validate == true){
+ while (validate == true && isAdmin == false){
         char r;
         cout << "Hello " + userName;
         cout << "\nWould you like to update your saved information? y/n";
@@ -104,8 +108,9 @@ void updatePaymentInfo(int c, string a){
     int choice;
     
     cout << "\nHere is your current personal information:";
-    cout << "\n1. Card number: " << c << endl;
-    cout << "\n2. Current address: " << a <<endl;
+    cout << "\n1. Card number: " << cardNum << endl;
+    cout << "\n2. Current address: " << address <<endl;
+    cout << "\n3. Phone number: " << phone << endl;
     cout << "\nWhat would you like to update? (1 or 2)";
     cin >> choice;
 
@@ -145,7 +150,7 @@ void updatePaymentInfo(int c, string a){
         }
     
     fstream newFile;
-    newFile.open("user.txt", ios::out);
+    newFile.open("user.txt", ios::in);
     if (newFile.is_open()){
     newFile << userName << passWord << cardNum << address;
     newFile.close();
