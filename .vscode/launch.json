@@ -7,11 +7,11 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": true,
-      "cwd": "/Users/amaniharrison/4.22v4/Project-3321-Group-3/Project 3321-Group 3",
+      "cwd": "/Users/amaniharrison/4.22v4/Project-3321-Group-3/4.22v4",
       "environment": [],
-      "program": "/Users/amaniharrison/4.22v4/Project-3321-Group-3/Project 3321-Group 3/build/Release/outRelease",
+      "program": "/Users/amaniharrison/4.22v4/Project-3321-Group-3/4.22v4/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
-      "MIMode": "gdb",
+      "MIMode": "lldb",
       "console": "integratedTerminal"
     }
   ]
