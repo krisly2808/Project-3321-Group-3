@@ -1,0 +1,12 @@
+false userN passWord 1234123412341234 123 Address true 
+
+true adminN passWord  
+
+
+
+Francisco
+Alfaro
+3462821804
+relegated
+
+
