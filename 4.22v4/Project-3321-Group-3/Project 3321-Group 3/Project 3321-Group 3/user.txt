@@ -1,0 +1,15 @@
+userN 
+passWord 
+1234123412341234 
+Amani 
+Harrison 
+123 Address 
+
+(username) (password) (credit info) (first and last name)(address) 
+
+Francisco
+Alfaro
+3462821804
+relegated
+
+
