@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="cartMenu.cpp" />
+    <ClCompile Include="mainMenu.cpp" />
+    <ClCompile Include="Project 3321-Group 3.cpp" />
+    <ClCompile Include="guestMenu.cpp" />
+    <ClCompile Include="products.cpp" />
+    <ClCompile Include="signup.cpp" />
+    <ClCompile Include="review.cpp" />
+    <ClCompile Include="checkOut.cpp" />
+    <ClCompile Include="LoginMenu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cartMenu.h" />
+    <ClInclude Include="guestMenu.h" />
+    <ClInclude Include="mainMenu.h" />
+    <ClInclude Include="products.h" />
+    <ClInclude Include="reviews.h" />
+    <ClInclude Include="signup.h" />
+    <ClInclude Include="checkOut.h" />
+    <ClInclude Include="LoginMenu.h" />
+  </ItemGroup>
+</Project>
