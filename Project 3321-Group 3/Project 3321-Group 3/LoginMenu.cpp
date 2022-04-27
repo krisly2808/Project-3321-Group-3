@@ -1,16 +1,20 @@
 #include "AM.h"
 #include "LoginMenu.h"
 #include "UserMenu.h"
+#include <iostream>
+using namespace std;
 
 
-bool isAdmin = false;
 string userName;
 string passWord;
 int cardNum;
+string fname;
+string lname;
 string address;
-bool isMember = false;
+bool isAdmin = false;
 bool validate = false;
-ifstream inFile;
+ifstream userFile;
+ifstream adminFile ("admin.txt", ios::in);
 //Amani - Login menu
 
 
@@ -24,13 +28,15 @@ void getLogin(){
 
 void validateLogin(){
     
-    bool admin;
+    
     string s1;
     string s2;
     int userCard;
+    string first;
+    string last;
     int addressNum;
-    string line;
-    bool member;
+    string addressLine;
+  
     
 
     while (validate == false){
@@ -41,60 +47,70 @@ void validateLogin(){
     cout << "Please Enter your Password: ";
     cin >> passWord;
 
+    userFile.open("user.txt", ios::in);
+    if (userFile.is_open()){
     
-    inFile.open("c//user.txt");
-    
-    if (inFile.fail()){
-        cout << "File Open Error";
-    }
+    string s;
+    while (std::getline(userFile, s, '\n')){
 
-    inFile >> admin >> s1 >> s2 >> userCard >> addressNum >> line >> member;
-    isAdmin = admin;
+    userFile >> s1 >> s2 >> userCard >> addressNum >> addressLine ;
     cardNum = userCard;
-    address = std::to_string(addressNum) + " " + line;
-    isMember = member;
+    address = std::to_string(addressNum) + " " + addressLine;
+   
     
 
-    inFile.close();
-
+    userFile.close();
+    }
     if ((s1 == userName) && (s2 == passWord)){
         validate = true;
+        isAdmin = false;
     }
-    else {
+    else if (validate == false){
+        adminFile.open("admin.txt", ios::in);
+        while(std::getline(adminFile, s, '\n')){
+            adminFile >> s1 >> s2;
+
+        }
+        if((s1 == userName) && (s2 == passWord)){
+            validate = true;
+            isAdmin = true;
+            printAdminMenu();
+        }
+
+
+    } else {
         validate = false;
     }
-   
+  }
 }
- while (validate == true && isAdmin == false){
+
+ while (validate == true){
         char r;
         cout << "Hello " + userName;
-        cout << "Would you like to update your saved information? y/n";
+        cout << "\nWould you like to update your saved information? y/n";
         cin >> r;
 
         if(r == 'y' || r =='Y'){
-           updatePaymentInfo(cardNum, address, isMember);
+           updatePaymentInfo(cardNum, address);
         }
         else if (r == 'n' || r == 'N'){
             printUserMenu();
         }
     }
-  while (validate == true && isAdmin == true){
-      printAdminMenu();
-  } 
+
 
 }
-void updatePaymentInfo(int c, string a, bool m){
+void updatePaymentInfo(int c, string a){
 
     int choice;
     
-    cout << "Here is your current personal information:";
-    cout << "1. Card number: " << c << endl;
-    cout << "2. Current address: " << a <<endl;
-    cout << "3. Member status: " << m << endl;
-    cout << "What would you like to update? (1, 2, or 3)";
+    cout << "\nHere is your current personal information:";
+    cout << "\n1. Card number: " << c << endl;
+    cout << "\n2. Current address: " << a <<endl;
+    cout << "\nWhat would you like to update? (1 or 2)";
     cin >> choice;
 
-    while ( choice <= 0 || choice > 3){
+    while ( choice <= 0 || choice > 2){
         char r;
         switch(choice){
             case 1:
@@ -104,7 +120,7 @@ void updatePaymentInfo(int c, string a, bool m){
             cardNum = c;
             cin >> r;
             if (r == 'y' || r == 'Y'){
-                updatePaymentInfo(c,a,m);
+                updatePaymentInfo(cardNum,address);
             }else {
                 printUserMenu();
                 break;
@@ -117,38 +133,22 @@ void updatePaymentInfo(int c, string a, bool m){
             address = a;
             cin >> r;
             if (r == 'y' || r == 'Y'){
-                updatePaymentInfo(c,a,m);
+                updatePaymentInfo(cardNum,address);
             }else {
                 printUserMenu();
                 break;
             }
 
-            case 3:
-            cout << "Are you sure you would like to change your member status from " << m << " to " << !m << "? y/n" << endl;
-            cin >> r;
-            if (r == 'y' || r == 'Y'){
-                bool temp;
-                temp = !m;
-                m = temp;
-                cout << "Okay! Your member status has been changed to " << m << endl;
-            }else {
-                cout << "Okay! Your member status will remain " << m << endl;
-            }
-            isMember = m;
-            cout << "Your member status has been saved! Would you like to update anymore information? y/n";
-            if (r == 'y' || r == 'Y'){
-                updatePaymentInfo(c,a,m);
-            }else {
-                printUserMenu();
+            default:
+                cout << "Please choose a valid number";
                 break;
             }
         }
-    }
-   
+    
     fstream newFile;
     newFile.open("user.txt", ios::out);
     if (newFile.is_open()){
-    newFile << isAdmin << userName << passWord << cardNum << address << isMember;
+    newFile << userName << passWord << cardNum << address;
     newFile.close();
 }
 
