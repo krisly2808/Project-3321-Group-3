@@ -9,8 +9,8 @@
 using namespace std;
 
 //RATIO to exchange USD to CAD and EUR
-const double USDCAD = 1.27;
-const double USDEUR = 0.93;
+double USDCAD = 1.27;
+double USDEUR = 0.93;
 
 
 //Function to print cart menu-Kris Ly

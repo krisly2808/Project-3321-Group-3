@@ -1,9 +1,11 @@
 #pragma once
-//Kris Ly- Function declaration for checkout 
+//Kris Ly- Function declaration for checkout- I did all of these
 
 void checkOut();
 
-void userCheckout();
+void userCheckoutFromGuestMenu();
+
+void userCheckoutFromUserMenu();
 
 void guestCheckout();
 

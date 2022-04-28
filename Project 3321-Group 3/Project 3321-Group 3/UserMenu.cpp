@@ -1,4 +1,6 @@
 #include "UserMenu.h"
+#include "reviews.h"
+#include "checkOut.h"
 
 
 void printUserMenu(){
@@ -8,7 +10,8 @@ void printUserMenu(){
     cout << "\t 1. View Products \n" ;
     cout << "\t 2. View/Modify Your Cart\n";
     cout << "\t 3. View or Add a Review \n";
-    cout << "\t 4. Return to Main Menu \n";
+    cout << "\t 4. Checkout.\n";
+    cout << "\t 5. Return to Main Menu \n";
 }
 
 void printDetailsUserMenu(){
@@ -29,20 +32,23 @@ void printDetailsUserMenu(){
             printDetailCartMenu(choice2);
         break;
 
-        case 3:
-        printReviews();
+ 
+        case 3: 
+            updateReviews();
         break;
         
         case 4:
+            userCheckoutFromUserMenu();
+            break;
+
+
+        case 5:
             cin.clear();
             cin.ignore();
             system("CLS");
             int choice;
-            //Print out the main menu prompt-Kris Ly
             printMainMenu();
             cin >> choice;
-
-            //Print detail menu based on input-Kris Ly
             printDetailMainMenu(choice);
         break;
 

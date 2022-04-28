@@ -106,8 +106,6 @@ void validateLogin(){
 
 }
 
-
-
 void updatePaymentInfo(){
 
     int choice;

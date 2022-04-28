@@ -1,7 +1,21 @@
+Name: John Doe
+Address: 123 Main street
+Credit Card: 1234567891123456
+Phone No: 8324415412
+=====================================================================
+|Design no|          Name            |     Quantity  |     Price     |
+=====================================================================
+   DS01	            TshirtXS		3		17.97
+   DS03	             TshirtM		5		44.95
+   DS04	             TShirtL		3		32.97
+   DS05	            TShirtXL		10		129.9
+   DS02	             TshirtS		2		15.98
+	Total price is: 241.77 in USD.
+
 Name: kris
-Address: ly
-Credit Card: 1234567899876544
-Phone No: 8324416666
+Address: 1320 Bellaire Blvd
+Credit Card: 1234567899876543
+Phone No: 8546768342
 =====================================================================
 |Design no|          Name            |     Quantity  |     Price     |
 =====================================================================

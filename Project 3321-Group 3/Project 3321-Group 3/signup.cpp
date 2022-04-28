@@ -14,9 +14,6 @@ void getInfo(); // gets the information from a new user
 void changePersonalInfo(string fName, string lName, string phoneNumber);
 void getPassword(); //function called in getInfo() that gets the password from the user, it is called within itself if password dont match while 
 //asking to re-enter 
-void passPassword(); //this function is to pass the password so it can be used as a global variable and be passed onto the file 
-void securityCode(); //this function is to obtain a security pin from the user just in case the password is forgotten. It is called
-// in forgotPassword() 
 
 //global variables used along with temporal variables to pass data onto a txt file 
 string USERNAME;
@@ -62,18 +59,14 @@ void menuDesign(){
 
 void signUp() //this is the function called from mainMenu.cpp to display everything in this file 
 {
+	system("cls");
 	getInfo();
 }
 
 void forgotPassword()
 {
-	//cout << "Enter your phone number: ";
-	//string phoneNumber;
-	//getline(cin, phoneNumber);
-
-	//if (phoneNumber == PHONENUMBER)
-	//{
-		cout << "\n\n <HI! I remember you!>\n";
+	string inputPhoneNo, inputUserName;
+	cout << "\n\n <HI! I remember you!>\n";
 	//just a design for the specific part of the menu 
 	cout << " --------------------\n";
 	cout << setw(23) << "\\  ^__^\n";
@@ -81,39 +74,40 @@ void forgotPassword()
 	cout << setw(34) << "(__)\       )\ / \ " << "\n";
 	cout << setw(32) << "    ||----m |  " << "\n";
 	cout << setw(32) << "  ||     ||`\n";
-	cout << "\nPlease input your pin: "; //takes the pin from the user who just created their account just in case they forgot it 
 
-	int pin;
-	cin >> pin;
-	if (pin == PIN)
-	{
-		passPassword();
-			}
-	else cout << "\nWrong pin...\n";
-}
+	cout << "We need to verify your PHONE NO and USER NAME to recover your password.\n";
+	cout << "\nPlease input your phone number: \n";
+	cin >> inputPhoneNo;
+	cout << "\nPLease input your user name: \n";
+	cin >> inputUserName;
+	fstream myFile;
+	myFile.open("user.txt", ios::in);
+	bool isUser = false;
+	string userNameInFile, passwordInFile, firstNameInFile, lastNameInFile,
+		creditCardInFile, addressInFile, phoneNoInFile, recoverPassword;
 
-void passPassword() //this function is used to read and pass the password to the passedPassword.txt and so that the user can 
-//obtain their password ...It basically reveals their password after asking the user for specific details . 
-{
-	{
-		string line;
-		ifstream file("passedPassword.txt");
-		if (file.is_open())
-		{
-			cout << "\n\nWe all tend to forget our password from time to time, and that's okay!\n";
-			cout << "Please enter your phone number: ";///switch to re-enter if other function works 
-			string phoneNo;
-			cin >> phoneNo;
-			for (int lineno = 1; getline(file, line) && lineno <= 1; lineno++)
-				if (lineno == 1 && file)
-					cout << "\nThis is your password: ";
-			cout << line << endl;
-			cout << "Please login now...\n";
-			file.close();
+	//verifying the user identity
+	while (getline(myFile, userNameInFile) && getline(myFile, passwordInFile) && getline(myFile, firstNameInFile)
+		&& getline(myFile, lastNameInFile) && getline(myFile, creditCardInFile)
+		&& getline(myFile, addressInFile) && getline(myFile, phoneNoInFile)) {
+		if (inputUserName == userNameInFile && inputPhoneNo == phoneNoInFile) {
+			isUser = true;
+			recoverPassword = passwordInFile;
 		}
-		else cout << "Can not open the file";
+	}
+	if (isUser == false) {
+		char choice;
+		cout << "Sorry, the combination does not exist in our database.\n"
+			<< "Would you like to register as an user now? y/Y\n";
+		cin >> choice;
+		if (choice == 'y' || choice == 'Y') signUp();
+	}
+	else {
+		cout << "\nYour combination is matched with our database.\n"
+			<< "This is your password: " << recoverPassword << endl;
 	}
 }
+
 
 void changePersonalInfo(string fName, string lName, string phoneNumber) //this function is just in case the user makes a mistake and wants to change 
 // a part of their recent inputs 
@@ -201,11 +195,6 @@ void getPassword() //this function gets the password from the user, it is called
 	ADDRESS = address;
 	cin.clear();
 
-
-
-	cout << "\nHi, you will be asked to enter a pin.(any length)\nThe pin is just in case you forget your password...\n ";
-	securityCode();
-
 	string PASS = password;
 	PASSWORD = PASS;
 
@@ -273,13 +262,7 @@ void getInfo() //this function is to obtain the details from the new user
 	}
 	else getPassword();
 
-	/*fstream myFile;
-	myFile.open("user.txt", ios::app);
-	if (myFile.is_open()) {
 
-		myFile << username << "\n" << PASSWORD << "\n" << fName << "\n" << lName << "\n" << CREDITCARD << "\n" << ADDRESS << "\n" << PHONENUMBER;
-		myFile.close();
-	}*/
 	fstream myUser, myNewUser;
 	myUser.open("user.txt", ios::in);
 	myNewUser.open("user2.txt", ios::out);
@@ -313,24 +296,5 @@ void getInfo() //this function is to obtain the details from the new user
 		cout << "*************Info has been UPDATED***************\n";
 	}
 
-
-}
-
-
-void securityCode() // gets security pin from user just in case password is forgotten . 
-{
-	cout << "\n\nPlease enter your pin: ";
-	int pin;
-	cin >> pin;
-	cout << "Re-enter your pin: ";
-	int pin2;
-	cin >> pin2;
-	if (pin2 != pin)
-	{
-		cout << "The pins don't match!\n";
-		return securityCode();
-	}
-	int temp = pin;
-	PIN = temp;
 
 }
