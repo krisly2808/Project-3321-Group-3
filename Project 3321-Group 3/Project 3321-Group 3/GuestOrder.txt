@@ -1,8 +1,13 @@
-kris ly
-1 main street
-1234567891234567
-DS01	TshirtXS	3	17.97
-DS03	TshirtM	5	44.95
-DS04	TShirtL	3	32.97
-DS05	TShirtXL	10	129.9
-DS02	TshirtS	2	15.98
+Name: kris
+Address: ly
+Credit Card: 1234567899876544
+Phone No: 8324416666
+=====================================================================
+|Design no|          Name            |     Quantity  |     Price     |
+=====================================================================
+   DS01	            TshirtXS		3		17.97
+   DS03	             TshirtM		5		44.95
+   DS04	             TShirtL		3		32.97
+   DS05	            TShirtXL		10		129.9
+   DS02	             TshirtS		2		15.98
+	Total price is: 241.77 in USD.

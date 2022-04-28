@@ -12,4 +12,4 @@ void getLogin();
 
 void validateLogin();
 
-void updatePaymentInfo(int, string);
+void updatePaymentInfo();

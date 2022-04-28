@@ -5,6 +5,7 @@ void printAdminMenu(){
 
 
 //Would eventually like to replace "Admin" with actual admin username
+    system("cls");
     cout << "Welcome Admin!" ;
     cout << "\t 1. View and Your Orders \n" ;
     cout << "\t 2. View and Manage Your Word and Art Bank \n";
@@ -13,10 +14,12 @@ void printAdminMenu(){
     cout << "\t 5. Return to Main Menu \n";
 }
 
-void detailsAdminMenu(int option){
+void printDetailsAdminMenu(){
     system("CLS");
     cin.clear();
-    cin.ignore();
+    int option;
+    cout << "Please input your choice";
+    cin >> option;
 
     switch(option){
 
