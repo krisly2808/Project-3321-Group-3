@@ -29,7 +29,7 @@ void printDetailCartMenu(int option) {
 	switch (option)
 	{ 
 	case 1:
-		viewCart();
+		viewCartInUSD();
 		break;
 	case 2:
 		modifyCart();
@@ -50,7 +50,7 @@ void printDetailCartMenu(int option) {
 }
 
 //Function to display items in cart-Kris Ly
-void viewCart() {
+void viewCartInUSD() {
 	
 	//open "cart.txt" to display all items in cart
 	fstream myFile;
@@ -75,9 +75,63 @@ void viewCart() {
 	}
 }
 
+//Function to display items in cart-Kris Ly
+void viewCartInCAD() {
+
+	//open "cart.txt" to display all items in cart
+	fstream myFile;
+	myFile.open("cart.txt", ios::in);
+	cout << "\t\tThis is the product currently in your cart\n";
+	cout << "=====================================================================\n";
+	cout << "|Design no|          Name            |     Quantity  |     Price     |\n";
+	cout << "=====================================================================\n";
+
+	//Iterate throught "cart.txt" to display items on screen
+	if (myFile.is_open()) {
+		string designID, designName;
+		int quantity;
+		double price;
+		double total = 0.0;
+		while (myFile >> designID && myFile >> designName && myFile >> quantity && myFile >> price) {
+			price = price* USDCAD;
+			total += price;
+			cout << "   " << designID << "\t" << setw(20) << designName << "\t\t" << quantity << "\t\t" << price << endl;
+		}
+		cout << "\tTotal price is: " << total << " in CAD." << endl;
+		myFile.close();
+	}
+}
+
+//Function to display items in cart-Kris Ly
+void viewCartInEUR() {
+
+	//open "cart.txt" to display all items in cart
+	fstream myFile;
+	myFile.open("cart.txt", ios::in);
+	cout << "\t\tThis is the product currently in your cart\n";
+	cout << "=====================================================================\n";
+	cout << "|Design no|          Name            |     Quantity  |     Price     |\n";
+	cout << "=====================================================================\n";
+
+	//Iterate throught "cart.txt" to display items on screen
+	if (myFile.is_open()) {
+		string designID, designName;
+		int quantity;
+		double price;
+		double total = 0.0;
+		while (myFile >> designID && myFile >> designName && myFile >> quantity && myFile >> price) {
+			price = price * USDEUR;
+			total += price;
+			cout << "   " << designID << "\t" << setw(20) << designName << "\t\t" << quantity << "\t\t" << price << endl;
+		}
+		cout << "\tTotal price is: " << total << " in EUR." << endl;
+		myFile.close();
+	}
+}
+
 //Function to modify items in cart-Kris Ly
 void modifyCart() {
-	viewCart();				//Display all items in cart
+	viewCartInUSD();				//Display all items in cart
 	int option;
 	char deleteMore, updateMore, addMore;
 
@@ -192,7 +246,7 @@ void deleteItem() {
 			cin.ignore();
 			system("CLS");
 			cout << "*************Cart has been UPDATED***************\n";
-			viewCart();
+			viewCartInUSD();
 		}
 	}
 	//Prompt the error if input item ID not match
@@ -252,7 +306,7 @@ void updateQuantity() {
 			cin.ignore();
 			system("CLS");
 			cout << "*************Cart has been UPDATED***************\n";
-			viewCart();}
+			viewCartInUSD();}
 	}
 
 	//Prompt the error if input item ID not match
@@ -345,7 +399,7 @@ void addItem() {
 			cin.ignore();
 			system("CLS");
 			cout << "*************Cart has been UPDATED***************\n";
-			viewCart();
+			viewCartInUSD();
 		}
 	}
 

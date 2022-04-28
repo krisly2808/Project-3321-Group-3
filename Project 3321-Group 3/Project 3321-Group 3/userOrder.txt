@@ -1,0 +1,13 @@
+Name:adam ly
+Address:121 I10
+Credit card info: 1234567891234567
+Phone no: 1234781252
+=====================================================================
+|Design no|          Name            |     Quantity  |     Price     |
+=====================================================================
+   DS01	            TshirtXS		3		22.8219
+   DS03	             TshirtM		5		57.0865
+   DS04	             TShirtL		3		41.8719
+   DS05	            TShirtXL		10		164.973
+   DS02	             TshirtS		2		20.2946
+	Total price is: 307.048 in CAD.

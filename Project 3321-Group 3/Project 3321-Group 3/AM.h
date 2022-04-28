@@ -8,5 +8,5 @@ using namespace std;
 //Amani Harrison, print admin menu
 void printAdminMenu();
 
-void detailsAdminMenu(int);
+void printDetailsAdminMenu();
 

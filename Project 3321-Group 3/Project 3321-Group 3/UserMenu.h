@@ -9,6 +9,6 @@ using namespace std;
 
 void printUserMenu();
 
-void printDetailsUserMenu(int);
+void printDetailsUserMenu();
 
 

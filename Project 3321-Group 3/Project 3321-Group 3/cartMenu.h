@@ -12,7 +12,13 @@ void printCartMenu();
 void printDetailCartMenu(int);
 
 //Function to display items in cart-Kris Ly
-void viewCart();
+void viewCartInUSD();
+
+//Function to display items in cart-Kris Ly
+void viewCartInCAD();
+
+//Function to display items in cart-Kris Ly
+void viewCartInEUR();
 
 //Function to modify items in cart-Kris Ly
 void modifyCart();

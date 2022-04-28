@@ -1,17 +1,2 @@
-<<<<<<< HEAD
-﻿  signup.cpp
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(100,22): warning C4129: '_': unrecognized character escape sequence
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(101,22): warning C4129: ' ': unrecognized character escape sequence
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(296,22): warning C4129: '_': unrecognized character escape sequence
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(297,22): warning C4129: ' ': unrecognized character escape sequence
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(339,14): warning C4834: discarding return value of function with 'nodiscard' attribute
-=======
-﻿  cartMenu.cpp
-  checkOut.cpp
-  LoginMenu.cpp
-  mainMenu.cpp
-  Project 3321-Group 3.cpp
-  guestMenu.cpp
-  Generating Code...
->>>>>>> ff3c191ddfc6cf3db1cfc29cf1d7749bacf0f932
+﻿  checkOut.cpp
   Project 3321-Group 3.vcxproj -> C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe
