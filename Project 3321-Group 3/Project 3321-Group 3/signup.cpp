@@ -151,6 +151,7 @@ void changePersonalInfo(string fName, string lName, string phoneNumber) //this f
 
 void getPassword() //this function gets the password from the user, it is called within it just in case passwords asked for don't match 
 {
+	
 	cout << "Enter your desired password: ";
 	string password;
 	cin >> password;
@@ -171,12 +172,6 @@ void getPassword() //this function gets the password from the user, it is called
 		return getPassword();
 
 	}
-	fstream myFile;
-	myFile.open("passedPassword.txt", ios::out);
-	if (myFile.is_open()) {
-		myFile << password;
-		myFile.close();
-	}
 
 	string address;
 	string creditCardNumber;
@@ -193,8 +188,6 @@ void getPassword() //this function gets the password from the user, it is called
 
 	string tempAdress = address; //temp variable to store the address to be accessed by the fuction that will read the infomation 
 	ADDRESS = address;
-	cin.clear();
-
 	string PASS = password;
 	PASSWORD = PASS;
 
@@ -246,6 +239,7 @@ void getInfo() //this function is to obtain the details from the new user
 	string temp = username;
 
 	USERNAME = temp; //TEMPORAL VARIABLES FOR THE WINNNNN
+	cin.clear();
 
 	cout << "\nBefore we ask for your password, would you like to change any of the recent information?(y/n or any other character)\n";
 	char c;
@@ -256,11 +250,11 @@ void getInfo() //this function is to obtain the details from the new user
 	{
 		changePersonalInfo(fName, lName, phoneNumber);
 	}
-	else if (c == 'n' || c == 'N')
+	else 
 	{
 		getPassword();
 	}
-	else getPassword();
+	
 
 
 	fstream myUser, myNewUser;
@@ -290,8 +284,7 @@ void getInfo() //this function is to obtain the details from the new user
 		cout << "Info has not been updated\n";
 	}
 	else {
-		cin.clear();
-		cin.ignore();
+		
 		system("CLS");
 		cout << "*************Info has been UPDATED***************\n";
 	}

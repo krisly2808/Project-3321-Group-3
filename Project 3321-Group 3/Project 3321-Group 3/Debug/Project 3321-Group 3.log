@@ -1,23 +1,2 @@
-﻿  AM.cpp
-  LoginMenu.cpp
-  Project 3321-Group 3.cpp
-  UserMenu.cpp
-  artMenu.cpp
-  cartMenu.cpp
-  checkOut.cpp
-  guestMenu.cpp
-  inventoryMenu.cpp
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\inventoryMenu.cpp(77,10): warning C4101: 'deleteI': unreferenced local variable
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\inventoryMenu.cpp(78,10): warning C4101: 'addI': unreferenced local variable
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\inventoryMenu.cpp(79,10): warning C4101: 'updateI': unreferenced local variable
-  mainMenu.cpp
-  orderMenu.cpp
-  products.cpp
-  review.cpp
-  signup.cpp
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(73,22): warning C4129: '_': unrecognized character escape sequence
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(74,22): warning C4129: ' ': unrecognized character escape sequence
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(208,22): warning C4129: '_': unrecognized character escape sequence
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(209,22): warning C4129: ' ': unrecognized character escape sequence
-  Generating Code...
+﻿  cartMenu.cpp
   Project 3321-Group 3.vcxproj -> C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe

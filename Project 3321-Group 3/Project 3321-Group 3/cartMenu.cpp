@@ -202,7 +202,7 @@ void modifyCart() {
 //Function to delete item in cart-Kris Ly
 void deleteItem() {
 	string designID, designName, itemID;
-	int quantity;
+	double quantity;
 	double price;
 	bool isValidID=false;	//variable to check if input item ID is valid
 
@@ -232,6 +232,7 @@ void deleteItem() {
 				outFile << quantity <<"\t";
 				outFile << price << endl;
 			}
+			else adjustInventory(designID, (0.0 - quantity));
 		}
 		inFile.close();
 		outFile.close();
@@ -256,7 +257,7 @@ void deleteItem() {
 //Function to update the quantity of items in cart-Kris Ly
 void updateQuantity() {
 	string designID, designName, itemID;
-	int quantity, updateQuantity;
+	double quantity, updateQuantity;
 	double price;
 	bool isValidID = false;			//variable to check if input item ID is valid
 
@@ -286,6 +287,7 @@ void updateQuantity() {
 			outFile << designName << "\t";
 			outFile << updateQuantity << "\t";
 			outFile << price / quantity * updateQuantity << endl;
+			adjustInventory(designID, (updateQuantity-quantity));
 		}
 		else {
 			outFile << designID << "\t";
@@ -357,6 +359,7 @@ void addItem() {
 					outFile << designID << "\t";
 					outFile << designName << "\t";
 					outFile << (addedQuantity + quantity)*price/quantity << endl;
+					adjustInventory(designID, addedQuantity);
 				}
 				else {
 					outFile << designID << "\t";
@@ -369,6 +372,8 @@ void addItem() {
 		else {
 			//Adding new item to the cart
 			ifstream inFileProduct;
+			string tempID;
+			double tempQuantity;
 			inFileProduct.open("products.txt");
 			while (inFile >> designID && inFile >> designName && inFile >> quantity && inFile >> price) {
 				outFile << designID << "\t";
@@ -382,9 +387,12 @@ void addItem() {
 					outFile << designName << "\t";
 					outFile << addedQuantity << "\t";
 					outFile << price * addedQuantity << endl;
+					tempID = designID;
+					tempQuantity = addedQuantity;
 				}
 			}
 			inFileProduct.close();
+			adjustInventory(tempID, tempQuantity);
 		}
 		inFile.close();
 		outFile.close();
@@ -435,4 +443,26 @@ double checkTotalCAD() {
 //Function to check total price of item in cart-Kris Ly
 double checkTotalEUR() {
 	return checkTotalUSD() * USDEUR;
+}
+
+//Function to adjuct number of item after order
+void adjustInventory(string designID, double quantity) {
+	string designIDInFile, designNameinFile, priceInFile;
+	double quantityInFile;
+	fstream myInventory, myNewInventory;
+	myInventory.open("products.txt",ios::in);
+	myNewInventory.open("newproducts.txt", ios::out);
+	while (myInventory >> designIDInFile >> designNameinFile >> priceInFile >> quantityInFile) {
+		if (designIDInFile == designID) {
+			quantityInFile = quantityInFile-quantity;
+			myNewInventory << designIDInFile<<"\t" << designNameinFile << "\t" << priceInFile << "\t" << quantityInFile<<endl;
+		}
+		else myNewInventory << designIDInFile << "\t" << designNameinFile << "\t" << priceInFile << "\t" << quantityInFile << endl;
+	}
+	myInventory.close();
+	myNewInventory.close();
+	remove("products.txt");
+	if (rename("newproducts.txt", "products.txt") != 0) {
+		cout << "Inventory has not been updated\n";
+	}
 }
