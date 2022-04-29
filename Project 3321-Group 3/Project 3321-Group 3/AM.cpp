@@ -25,13 +25,11 @@ void detailsAdminMenu(int option){
         break;
 
         case 2: 
-        int choice;
         viewArtMenu();
-        cin >> choice;
-        viewDetailArtMenu(choice);
         break;
 
-        case 3: //inventoryMenu();
+        case 3: 
+        printInventoryMenu();
         break;
 
         case 4: //changeCurrency();
