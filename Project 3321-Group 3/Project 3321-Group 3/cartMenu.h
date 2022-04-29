@@ -1,7 +1,10 @@
 #pragma once
 #include "products.h"
 #include "guestMenu.h"
+#include <string>
+#include <iostream>
 
+using namespace std;
 //Function related to Cart menu
 //Functions declaration
 
@@ -12,7 +15,13 @@ void printCartMenu();
 void printDetailCartMenu(int);
 
 //Function to display items in cart-Kris Ly
-void viewCart();
+void viewCartInUSD();
+
+//Function to display items in cart-Kris Ly
+void viewCartInCAD();
+
+//Function to display items in cart-Kris Ly
+void viewCartInEUR();
 
 //Function to modify items in cart-Kris Ly
 void modifyCart();
@@ -34,3 +43,6 @@ double checkTotalCAD();
 
 //Function to check total price of item in cart-Kris Ly
 double checkTotalEUR();
+
+//Function to adjuct number of item after order-Kris Ly
+void adjustInventory(string, double);

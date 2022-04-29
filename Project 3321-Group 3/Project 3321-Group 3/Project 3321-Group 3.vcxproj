@@ -143,6 +143,7 @@
     <ClCompile Include="artMenu.cpp" />
     <ClCompile Include="cartMenu.cpp" />
     <ClCompile Include="checkOut.cpp" />
+    <ClCompile Include="inventoryMenu.cpp" />
     <ClCompile Include="LoginMenu.cpp" />
     <ClCompile Include="mainMenu.cpp" />
     <ClCompile Include="orderMenu.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="cartMenu.h" />
     <ClInclude Include="checkOut.h" />
     <ClInclude Include="guestMenu.h" />
+    <ClInclude Include="inventoryMenu.h" />
     <ClInclude Include="LoginMenu.h" />
     <ClInclude Include="mainMenu.h" />
     <ClInclude Include="ordersMenu.h" />

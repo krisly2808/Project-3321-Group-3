@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -21,7 +22,7 @@ void printDetailsInventoryMenu(int option){
 
     switch(option){
         case 1: 
-       modifyInventory;
+       modifyInventory();
         break;
         case 2:
         //updateCurrency
@@ -86,7 +87,7 @@ void modifyInventory(){
     switch(option){
 
         case 1:
-        updateQuantity();
+			updateInventory();
         break;
 
         case 2:
@@ -103,7 +104,7 @@ void modifyInventory(){
     }
 }
 
-void updateQuantity() {
+void updateInventory() {
 	string designID, designName, itemID;
 	int quantity, updateQuantity;
 	double price;

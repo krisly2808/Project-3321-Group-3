@@ -9,8 +9,8 @@
 using namespace std;
 
 //RATIO to exchange USD to CAD and EUR
-const double USDCAD = 1.27;
-const double USDEUR = 0.93;
+double USDCAD = 1.27;
+double USDEUR = 0.93;
 
 
 //Function to print cart menu-Kris Ly
@@ -29,7 +29,7 @@ void printDetailCartMenu(int option) {
 	switch (option)
 	{ 
 	case 1:
-		viewCart();
+		viewCartInUSD();
 		break;
 	case 2:
 		modifyCart();
@@ -50,7 +50,7 @@ void printDetailCartMenu(int option) {
 }
 
 //Function to display items in cart-Kris Ly
-void viewCart() {
+void viewCartInUSD() {
 	
 	//open "cart.txt" to display all items in cart
 	fstream myFile;
@@ -75,9 +75,63 @@ void viewCart() {
 	}
 }
 
+//Function to display items in cart-Kris Ly
+void viewCartInCAD() {
+
+	//open "cart.txt" to display all items in cart
+	fstream myFile;
+	myFile.open("cart.txt", ios::in);
+	cout << "\t\tThis is the product currently in your cart\n";
+	cout << "=====================================================================\n";
+	cout << "|Design no|          Name            |     Quantity  |     Price     |\n";
+	cout << "=====================================================================\n";
+
+	//Iterate throught "cart.txt" to display items on screen
+	if (myFile.is_open()) {
+		string designID, designName;
+		int quantity;
+		double price;
+		double total = 0.0;
+		while (myFile >> designID && myFile >> designName && myFile >> quantity && myFile >> price) {
+			price = price* USDCAD;
+			total += price;
+			cout << "   " << designID << "\t" << setw(20) << designName << "\t\t" << quantity << "\t\t" << price << endl;
+		}
+		cout << "\tTotal price is: " << total << " in CAD." << endl;
+		myFile.close();
+	}
+}
+
+//Function to display items in cart-Kris Ly
+void viewCartInEUR() {
+
+	//open "cart.txt" to display all items in cart
+	fstream myFile;
+	myFile.open("cart.txt", ios::in);
+	cout << "\t\tThis is the product currently in your cart\n";
+	cout << "=====================================================================\n";
+	cout << "|Design no|          Name            |     Quantity  |     Price     |\n";
+	cout << "=====================================================================\n";
+
+	//Iterate throught "cart.txt" to display items on screen
+	if (myFile.is_open()) {
+		string designID, designName;
+		int quantity;
+		double price;
+		double total = 0.0;
+		while (myFile >> designID && myFile >> designName && myFile >> quantity && myFile >> price) {
+			price = price * USDEUR;
+			total += price;
+			cout << "   " << designID << "\t" << setw(20) << designName << "\t\t" << quantity << "\t\t" << price << endl;
+		}
+		cout << "\tTotal price is: " << total << " in EUR." << endl;
+		myFile.close();
+	}
+}
+
 //Function to modify items in cart-Kris Ly
 void modifyCart() {
-	viewCart();				//Display all items in cart
+	viewCartInUSD();				//Display all items in cart
 	int option;
 	char deleteMore, updateMore, addMore;
 
@@ -148,7 +202,7 @@ void modifyCart() {
 //Function to delete item in cart-Kris Ly
 void deleteItem() {
 	string designID, designName, itemID;
-	int quantity;
+	double quantity;
 	double price;
 	bool isValidID=false;	//variable to check if input item ID is valid
 
@@ -178,6 +232,7 @@ void deleteItem() {
 				outFile << quantity <<"\t";
 				outFile << price << endl;
 			}
+			else adjustInventory(designID, (0.0 - quantity));
 		}
 		inFile.close();
 		outFile.close();
@@ -192,7 +247,7 @@ void deleteItem() {
 			cin.ignore();
 			system("CLS");
 			cout << "*************Cart has been UPDATED***************\n";
-			viewCart();
+			viewCartInUSD();
 		}
 	}
 	//Prompt the error if input item ID not match
@@ -202,7 +257,7 @@ void deleteItem() {
 //Function to update the quantity of items in cart-Kris Ly
 void updateQuantity() {
 	string designID, designName, itemID;
-	int quantity, updateQuantity;
+	double quantity, updateQuantity;
 	double price;
 	bool isValidID = false;			//variable to check if input item ID is valid
 
@@ -232,6 +287,7 @@ void updateQuantity() {
 			outFile << designName << "\t";
 			outFile << updateQuantity << "\t";
 			outFile << price / quantity * updateQuantity << endl;
+			adjustInventory(designID, (updateQuantity-quantity));
 		}
 		else {
 			outFile << designID << "\t";
@@ -252,7 +308,7 @@ void updateQuantity() {
 			cin.ignore();
 			system("CLS");
 			cout << "*************Cart has been UPDATED***************\n";
-			viewCart();}
+			viewCartInUSD();}
 	}
 
 	//Prompt the error if input item ID not match
@@ -303,6 +359,7 @@ void addItem() {
 					outFile << designID << "\t";
 					outFile << designName << "\t";
 					outFile << (addedQuantity + quantity)*price/quantity << endl;
+					adjustInventory(designID, addedQuantity);
 				}
 				else {
 					outFile << designID << "\t";
@@ -315,6 +372,8 @@ void addItem() {
 		else {
 			//Adding new item to the cart
 			ifstream inFileProduct;
+			string tempID;
+			double tempQuantity;
 			inFileProduct.open("products.txt");
 			while (inFile >> designID && inFile >> designName && inFile >> quantity && inFile >> price) {
 				outFile << designID << "\t";
@@ -328,9 +387,12 @@ void addItem() {
 					outFile << designName << "\t";
 					outFile << addedQuantity << "\t";
 					outFile << price * addedQuantity << endl;
+					tempID = designID;
+					tempQuantity = addedQuantity;
 				}
 			}
 			inFileProduct.close();
+			adjustInventory(tempID, tempQuantity);
 		}
 		inFile.close();
 		outFile.close();
@@ -345,7 +407,7 @@ void addItem() {
 			cin.ignore();
 			system("CLS");
 			cout << "*************Cart has been UPDATED***************\n";
-			viewCart();
+			viewCartInUSD();
 		}
 	}
 
@@ -381,4 +443,26 @@ double checkTotalCAD() {
 //Function to check total price of item in cart-Kris Ly
 double checkTotalEUR() {
 	return checkTotalUSD() * USDEUR;
+}
+
+//Function to adjuct number of item after order
+void adjustInventory(string designID, double quantity) {
+	string designIDInFile, designNameinFile, priceInFile;
+	double quantityInFile;
+	fstream myInventory, myNewInventory;
+	myInventory.open("products.txt",ios::in);
+	myNewInventory.open("newproducts.txt", ios::out);
+	while (myInventory >> designIDInFile >> designNameinFile >> priceInFile >> quantityInFile) {
+		if (designIDInFile == designID) {
+			quantityInFile = quantityInFile-quantity;
+			myNewInventory << designIDInFile<<"\t" << designNameinFile << "\t" << priceInFile << "\t" << quantityInFile<<endl;
+		}
+		else myNewInventory << designIDInFile << "\t" << designNameinFile << "\t" << priceInFile << "\t" << quantityInFile << endl;
+	}
+	myInventory.close();
+	myNewInventory.close();
+	remove("products.txt");
+	if (rename("newproducts.txt", "products.txt") != 0) {
+		cout << "Inventory has not been updated\n";
+	}
 }

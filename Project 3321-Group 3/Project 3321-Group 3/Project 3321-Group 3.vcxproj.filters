@@ -14,6 +14,7 @@
     <ClCompile Include="artMenu.cpp" />
     <ClCompile Include="UserMenu.cpp" />
     <ClCompile Include="orderMenu.cpp" />
+    <ClCompile Include="inventoryMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cartMenu.h" />
@@ -28,5 +29,6 @@
     <ClInclude Include="artMenu.h" />
     <ClInclude Include="UserMenu.h" />
     <ClInclude Include="ordersMenu.h" />
+    <ClInclude Include="inventoryMenu.h" />
   </ItemGroup>
 </Project>
