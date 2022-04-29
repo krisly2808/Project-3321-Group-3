@@ -35,13 +35,13 @@ void printDetailsAdminMenu(){
         break;
 
         case 2: 
-        int choice;
         viewArtMenu();
-        cin >> choice;
-        viewDetailArtMenu(choice);
         break;
 
         case 3: 
+
+        printInventoryMenu();
+
         //Update Inventory-Kris Ly
         {viewProducts();
         string designID, name, price, number;

@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": true,
-      "cwd": "/Users/amaniharrison/4.22v4/Project-3321-Group-3/4.22v4",
+      "cwd": "/Users/amaniharrison/FinalSoftwareEng/Project-3321-Group-3/4.22v4",
       "environment": [],
-      "program": "/Users/amaniharrison/4.22v4/Project-3321-Group-3/4.22v4/build/Debug/outDebug",
+      "program": "/Users/amaniharrison/FinalSoftwareEng/Project-3321-Group-3/4.22v4/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "lldb",
       "console": "integratedTerminal"

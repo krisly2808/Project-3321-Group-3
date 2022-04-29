@@ -74,9 +74,7 @@ void modifyInventory(){
 
     viewInventory();
     int option;
-    char deleteI;
-    char addI;
-    char updateI;
+   
 
     cout << " \nPlease pick the following option:\n";
 	cout << " 1. Update the quantity of item(s)\n";
@@ -93,7 +91,7 @@ void modifyInventory(){
         break;
 
         case 2:
-        addNewItem();
+        addNewInventory();
         break;
 
         case 3:
@@ -127,11 +125,11 @@ void updateInventory() {
 
 	//If the Item ID is valid, process the update function
 	if (isValidID) {ifstream inFile;
-	inFile.open("inventory.txt");		//open "cart.txt" in read mode
+	inFile.open("inventory.txt");		//open "inventory.txt" in read mode
 	ofstream outFile;
-	outFile.open("newInventory.txt");	//create and open "newcart.txt" in write mode to hold the temp values of cart
+	outFile.open("newInventory.txt");	//create and open "newinventory.txt" in write mode to hold the temp values of cart
 
-	//Copy and update the info of items to "newcart.txt"
+	//Copy and update the info of items to "newinventory.txt"
 	while (inFile >> designID && inFile >> designName && inFile >> quantity && inFile >> price) {
 		if (designID == itemID) {
 			outFile << designID << "\t";
@@ -149,7 +147,7 @@ void updateInventory() {
 	inFile.close();
 	outFile.close();
 
-	//remove old cart file named "cart.txt" and replace by "newcart.txt". Then rename "newcart.txt"
+	//remove old cart file named "inventory.txt" and replace by "newinventory.txt". Then rename "newinventory.txt"
 	remove("inventory.txt");
 	if (rename("newInventory.txt", "inventory.txt") != 0) {
 			cout << "Cart has not been updated\n";}
@@ -165,7 +163,7 @@ void updateInventory() {
 	else { cout << "Your input itemID is not match with any items in cart.\n"; }
 }
 
-void addNewItem() {
+void addNewInventory() {
 	string designID, designName, itemID;
 	double quantity;
 	double price;

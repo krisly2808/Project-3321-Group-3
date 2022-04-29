@@ -7,6 +7,12 @@ using namespace std;
 
 void printInventoryMenu();
 
+void printDetailsInventoryMenu(int);
+
+=======
+
+void printInventoryMenu();
+
 void printDetailsInventoryMenu(int option);
 void viewInventory();
 
@@ -18,3 +24,4 @@ void updateInventory();
 void addNewItem();
 
 void updateCurrency(double price);
+
