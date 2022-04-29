@@ -25,7 +25,7 @@ void printDetailsInventoryMenu(int option){
        modifyInventory();
         break;
         case 2:
-        //updateCurrency
+        updateCurrency(2.0);
         default:
         cout << "That is not a valid choice";
 
@@ -87,7 +87,7 @@ void modifyInventory(){
     switch(option){
 
         case 1:
-			updateInventory();
+		updateInventory();
         break;
 
         case 2:
@@ -95,7 +95,7 @@ void modifyInventory(){
         break;
 
         case 3:
-        //updateCurrency();
+        updateCurrency(2.0);
         break;
 
         default:
@@ -117,7 +117,7 @@ void updateInventory() {
 
 	//Checking if input item ID is in the file -"cart.txt". Return true if valid
 	ifstream checkItemID;
-	checkItemID.open("inventory.txt");
+	checkItemID.open("products.txt");
 	while (checkItemID >> designID && checkItemID >> designName && checkItemID >> quantity && checkItemID >> price) {
 		if (itemID == designID) isValidID = true;
 	}
@@ -125,9 +125,9 @@ void updateInventory() {
 
 	//If the Item ID is valid, process the update function
 	if (isValidID) {ifstream inFile;
-	inFile.open("inventory.txt");		//open "inventory.txt" in read mode
+	inFile.open("products.txt");		//open "inventory.txt" in read mode
 	ofstream outFile;
-	outFile.open("newInventory.txt");	//create and open "newinventory.txt" in write mode to hold the temp values of cart
+	outFile.open("newProducts.txt");	//create and open "newinventory.txt" in write mode to hold the temp values of cart
 
 	//Copy and update the info of items to "newinventory.txt"
 	while (inFile >> designID && inFile >> designName && inFile >> quantity && inFile >> price) {
@@ -148,8 +148,8 @@ void updateInventory() {
 	outFile.close();
 
 	//remove old cart file named "inventory.txt" and replace by "newinventory.txt". Then rename "newinventory.txt"
-	remove("inventory.txt");
-	if (rename("newInventory.txt", "inventory.txt") != 0) {
+	remove("products.txt");
+	if (rename("newProducts.txt", "products.txt") != 0) {
 			cout << "Cart has not been updated\n";}
 	else {
 			cin.clear();
@@ -181,7 +181,7 @@ void addNewInventory() {
 
 	//Add new item to inventory
 	fstream newInventory;
-	newInventory.open("inventory.txt", newInventory.out | newInventory.app);
+	newInventory.open("product.txt", newInventory.out | newInventory.app);
     if(newInventory.is_open()){
 	newInventory << designID + " ";
     newInventory << designName + " ";
@@ -201,6 +201,8 @@ void addNewInventory() {
 	}
 
     void updateCurrency(double price){
+
+
 
 
     }

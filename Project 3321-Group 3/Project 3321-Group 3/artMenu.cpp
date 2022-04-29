@@ -1,5 +1,7 @@
 #include "artMenu.h"
+//Amani
 
+//print artmenu
 void viewArtMenu(){
 
     cout << "========= Art and Word Bank =========";

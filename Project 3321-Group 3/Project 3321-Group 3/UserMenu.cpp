@@ -5,7 +5,7 @@
 
 void printUserMenu(){
 
-//Would eventually like to replace "User" with actual username
+//Would eventually like to replace "User" with actual username - Amani
     cout << "Welcome User!\n" ;
     cout << "\t 1. View Products \n" ;
     cout << "\t 2. View/Modify Your Cart\n";
