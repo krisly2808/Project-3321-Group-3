@@ -11,7 +11,6 @@
     <ClCompile Include="checkOut.cpp" />
     <ClCompile Include="LoginMenu.cpp" />
     <ClCompile Include="AM.cpp" />
-    <ClCompile Include="artMenu.cpp" />
     <ClCompile Include="UserMenu.cpp" />
     <ClCompile Include="orderMenu.cpp" />
     <ClCompile Include="inventoryMenu.cpp" />
@@ -26,7 +25,6 @@
     <ClInclude Include="checkOut.h" />
     <ClInclude Include="LoginMenu.h" />
     <ClInclude Include="AM.h" />
-    <ClInclude Include="artMenu.h" />
     <ClInclude Include="UserMenu.h" />
     <ClInclude Include="ordersMenu.h" />
     <ClInclude Include="inventoryMenu.h" />

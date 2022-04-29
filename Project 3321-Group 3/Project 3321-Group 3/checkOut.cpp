@@ -109,50 +109,6 @@ void userCheckoutFromGuestMenu() {
 	myFile.close();
 }
 
-////General function to checkout as User from User menu-Kris Ly
-void userCheckoutFromUserMenu() {
-		system("cls");
-		int choice;
-		string userName;
-		cout<< "Please verify your user name so we can process the member checkout:\n";
-		cin >> userName;
-		fstream myFile;
-		myFile.open("user.txt", ios::in);
-		string userNameInFile, passwordInFile, firstNameInFile, lastNameInFile,
-			creditCardInFile, addressInFile, phoneNoInFile;
-		//verifying the user identity
-		while (getline(myFile, userNameInFile) && getline(myFile, passwordInFile) && getline(myFile, firstNameInFile)
-			&& getline(myFile, lastNameInFile) && getline(myFile, creditCardInFile)
-			&& getline(myFile, addressInFile) && getline(myFile, phoneNoInFile)) {
-			if (userName == userNameInFile ) {
-				SAVEDUSERNAME = userName;
-				SAVEDPASSWORD = passwordInFile;
-			}
-		}
-		cout << "Welcome back Loyal Customer: "<<SAVEDUSERNAME<<" \n";
-		viewCartInUSD();
-		cout << "1. Check-out in USD\n";
-		cout << "2. Check-out in CAD\n";
-		cout << "3. Check-out in EUR\n";
-		cin >> choice;
-		switch (choice) {
-		case 1:
-
-			checkoutinUSD();
-			break;
-		case 2:
-			checkoutinCAD();
-			break;
-		case 3:
-			checkoutinEUR();
-			break;
-		default:
-			cout << "INVALID choice.\n";
-			break;
-		}
-		myFile.close();
-}
-
 //Function for guest checkout ONLy in USD-Kris Ly
 void guestCheckout() {
 	system("CLS");
@@ -451,4 +407,48 @@ void checkoutinEUR() {
 		}
 	}
 
+}
+
+////General function to checkout as User from User menu-Kris Ly
+void memberCheckout() {
+	system("cls");
+	int choice;
+	string userName;
+	cout << "Please verify your user name so we can process the member checkout:\n";
+	cin >> userName;
+	fstream myFile;
+	myFile.open("user.txt", ios::in);
+	string userNameInFile, passwordInFile, firstNameInFile, lastNameInFile,
+		creditCardInFile, addressInFile, phoneNoInFile;
+	//verifying the user identity
+	while (getline(myFile, userNameInFile) && getline(myFile, passwordInFile) && getline(myFile, firstNameInFile)
+		&& getline(myFile, lastNameInFile) && getline(myFile, creditCardInFile)
+		&& getline(myFile, addressInFile) && getline(myFile, phoneNoInFile)) {
+		if (userName == userNameInFile) {
+			SAVEDUSERNAME = userName;
+			SAVEDPASSWORD = passwordInFile;
+		}
+	}
+	cout << "Welcome back Loyal Customer: " << SAVEDUSERNAME << " \n";
+	viewCartInUSD();
+	cout << "1. Check-out in USD\n";
+	cout << "2. Check-out in CAD\n";
+	cout << "3. Check-out in EUR\n";
+	cin >> choice;
+	switch (choice) {
+	case 1:
+
+		checkoutinUSD();
+		break;
+	case 2:
+		checkoutinCAD();
+		break;
+	case 3:
+		checkoutinEUR();
+		break;
+	default:
+		cout << "INVALID choice.\n";
+		break;
+	}
+	myFile.close();
 }

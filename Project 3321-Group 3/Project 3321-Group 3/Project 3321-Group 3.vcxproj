@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AM.cpp" />
-    <ClCompile Include="artMenu.cpp" />
     <ClCompile Include="cartMenu.cpp" />
     <ClCompile Include="checkOut.cpp" />
     <ClCompile Include="inventoryMenu.cpp" />
@@ -156,7 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AM.h" />
-    <ClInclude Include="artMenu.h" />
     <ClInclude Include="cartMenu.h" />
     <ClInclude Include="checkOut.h" />
     <ClInclude Include="guestMenu.h" />

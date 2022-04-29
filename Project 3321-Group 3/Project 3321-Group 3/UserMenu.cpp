@@ -17,7 +17,7 @@ void printUserMenu(){
 void printDetailsUserMenu(){
     cin.clear();
     int option;
-    cout << "Please input your choice";
+    cout << "Please input your choice: \n";
     cin >> option;
 
     switch(option){
@@ -38,7 +38,7 @@ void printDetailsUserMenu(){
         break;
         
         case 4:
-            userCheckoutFromUserMenu();
+             memberCheckout();
             break;
 
 

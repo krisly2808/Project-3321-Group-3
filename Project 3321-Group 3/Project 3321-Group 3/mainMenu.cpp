@@ -30,18 +30,25 @@ void printDetailMainMenu(int option) {
 	switch (option)
 	{
 	case 1:
-		cout << "Printing the login menu\n";
 		getLogin();
 
 		break;
 	case 2:
 		signUp();
 		break;
-	case 3:
-		int choice;
-		printGuestMenu();
-		cin >> choice;
-		printDetailGuestMenu(choice);
+	case 3: {
+		char repeat;
+		do {
+			system("cls");
+			int choice;
+			printGuestMenu();
+			cin >> choice;
+			printDetailGuestMenu(choice);
+			cin.clear();
+			cout << "Back to Guest Menu? Y/y\n";
+			cin >> repeat;
+		} while (repeat =='y'||repeat=='Y');
+	}
 		break;
 	case 4:
 		forgotPassword();

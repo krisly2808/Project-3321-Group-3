@@ -5,7 +5,8 @@
 
 using namespace std;
 
-void viewOrders();
+void viewGuestOrders();
+void viewUserOrders();
 
 
 

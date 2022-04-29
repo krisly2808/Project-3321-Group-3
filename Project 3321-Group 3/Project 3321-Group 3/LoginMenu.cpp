@@ -74,8 +74,13 @@ void validateLogin(){
             if ((s1 == userName) && (s2 == passWord)) {
                 validate = true;
                 isAdmin = true;
-                printAdminMenu();
-                printDetailsAdminMenu();
+                char repeat;
+                do {
+                    printAdminMenu();
+                    printDetailsAdminMenu();
+                    cout << "Going back to the admin menu?Y/y\n";
+                    cin >> repeat;
+                } while (repeat=='y'||repeat=='Y');
             }
             adminFile.close();
         }
@@ -96,10 +101,14 @@ void validateLogin(){
            updatePaymentInfo();
         }
         else if (r == 'n' || r == 'N'){
-           
+            char repeat;
+            do {
             system("cls");
             printUserMenu();
             printDetailsUserMenu();
+            cout << "Going back to the user menu?Y/y\n";
+            cin >> repeat;
+            } while (repeat == 'y' || repeat == 'Y');
         }
     }
 

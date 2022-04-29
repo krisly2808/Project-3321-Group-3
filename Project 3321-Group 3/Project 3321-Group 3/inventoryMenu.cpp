@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
+#include "AM.h"
 
 using namespace std;
 
@@ -11,8 +12,8 @@ using namespace std;
 void printInventoryMenu(){
 
     cout << "Manage your inventory";
-    cout << "\n1. Modify Current Inventory";
-    cout << "\n2. Update Currency";
+    cout << "\n1. View Current Inventory";
+    cout << "\n2. Update the Inventory";
     cout << "\n3. Return To Admin Menu";
 }
 
@@ -22,65 +23,49 @@ void printDetailsInventoryMenu(int option){
 
     switch(option){
         case 1: 
-       modifyInventory();
+			viewInventory();
         break;
         case 2:
-        //updateCurrency
+			updateInventory();
+		break;
+		case 3:
+			printAdminMenu();
+			printDetailsAdminMenu();
+		break;
         default:
         cout << "That is not a valid choice";
-
     }
 
 }
+
 void viewInventory() {
-	
-	//open "inventory.txt" to display all items in cart
+	//open file "product.txt" to display all items carried
 	fstream myFile;
-	myFile.open("inventory.txt", ios::in);
-	cout << "\t\tThis is your current inventory\n";
-	cout << "=====================================================================\n";
-	cout << "|Design no|          Name            |     Quantity  |     Price     |\n";
-	cout << "=====================================================================\n";
+	myFile.open("products.txt", ios::in);
+	cout << "\t\t\tThis is the product in INVENTORY\n";
+	cout << "======================================================================================\n";
+	cout << "|Design no|          Name            ||          Price            ||  Number of items ||\n";
+	cout << "======================================================================================\n";
 
-
-if (myFile.is_open()) {
+	//Iterate through the "products.txt" file and display on screen
+	if (myFile.is_open()) {
 		string designID, designName;
-		int quantity;
-		double price;
-		
-		while (myFile >> designID&& myFile >> designName&& myFile >> quantity &&myFile >> price) {
-			
-			cout << "   " << designID << "\t"<<setw(20) << designName <<"\t\t"<< quantity<<"\t\t" << price << endl;
+		double price, number;
+		while (myFile >> designID >> designName >> price >> number) {
+			cout << "   " << setw(5) << designID << setw(20) << designName << setw(25) << price << setw(25) << number << endl;
 		}
-		
 		myFile.close();
-    
-}
-    char r;    
-    cout << "Would you like to modify your cart? y/n";
-    cin >> r;
-    if(r == 'y' || r == 'Y'){
-        modifyInventory();
-    }else{
-        cout << "Returning to Inventory Menu";
-        printInventoryMenu();
-    }
-    
+	}
 
 }
-
 
 void modifyInventory(){
 
     viewInventory();
     int option;
-   
-
-    cout << " \nPlease pick the following option:\n";
+   	cout << " \nPlease pick the following option:\n";
 	cout << " 1. Update the quantity of item(s)\n";
-	cout << " 2. Add new item(s)\n";
-    cout << " 3. Update Currecny\n";
-	cout << " 4. Back to previous Menu\n";
+	cout << " 2. Back to admin Menu\n";
 
     cin >> option;
 
@@ -91,66 +76,65 @@ void modifyInventory(){
         break;
 
         case 2:
-        addNewInventory();
-        break;
-
-        case 3:
-        //updateCurrency();
+			printAdminMenu();
+			printDetailsAdminMenu();
         break;
 
         default:
-        cout << "Please enter a valid number";
+        cout << "Please enter a valid number\n";
         break;
     }
 }
 
 void updateInventory() {
 	string designID, designName, itemID;
-	int quantity, updateQuantity;
+	double quantity, updateQuantity;
 	double price;
 	bool isValidID = false;			//variable to check if input item ID is valid
-
+	viewInventory();
 	cout << "Enter the Design ID of item you want to update: \n";
 	cin >> itemID;
-	cout << "Enter new quantity for the item please: \n";
+	cout << "Enter number of this item please: \n";
 	cin >> updateQuantity;
 
 	//Checking if input item ID is in the file -"cart.txt". Return true if valid
 	ifstream checkItemID;
-	checkItemID.open("inventory.txt");
-	while (checkItemID >> designID && checkItemID >> designName && checkItemID >> quantity && checkItemID >> price) {
+	checkItemID.open("products.txt");
+	while (checkItemID >> designID >> designName  >> price >> quantity) {
 		if (itemID == designID) isValidID = true;
 	}
 	checkItemID.close();
 
 	//If the Item ID is valid, process the update function
-	if (isValidID) {ifstream inFile;
-	inFile.open("inventory.txt");		//open "inventory.txt" in read mode
-	ofstream outFile;
-	outFile.open("newInventory.txt");	//create and open "newinventory.txt" in write mode to hold the temp values of cart
+	if (isValidID) {
+		ifstream inFile;
+		inFile.open("products.txt");		//open "inventory.txt" in read mode
+		ofstream outFile;
+		outFile.open("newProducts.txt");	//create and open "newinventory.txt" in write mode to hold the temp values of cart
 
 	//Copy and update the info of items to "newinventory.txt"
-	while (inFile >> designID && inFile >> designName && inFile >> quantity && inFile >> price) {
+	while (inFile >> designID && inFile >> designName && inFile >> price && inFile >> quantity) {
 		if (designID == itemID) {
 			outFile << designID << "\t";
 			outFile << designName << "\t";
-			outFile << updateQuantity << "\t";
-			outFile << price / quantity * updateQuantity << endl;
+			outFile << price << "\t";
+			quantity = quantity + updateQuantity;
+			outFile <<  quantity << endl;
 		}
 		else {
 			outFile << designID << "\t";
 			outFile << designName << "\t";
-			outFile << quantity << "\t";
-			outFile << price << endl;
+			outFile << price << "\t";
+			outFile << quantity << endl;
 		}
 	}
 	inFile.close();
 	outFile.close();
 
 	//remove old cart file named "inventory.txt" and replace by "newinventory.txt". Then rename "newinventory.txt"
-	remove("inventory.txt");
-	if (rename("newInventory.txt", "inventory.txt") != 0) {
-			cout << "Cart has not been updated\n";}
+	remove("products.txt");
+	if (rename("newProducts.txt", "products.txt") != 0) {
+			cout << "Inventory has not been updated\n";}
 	else {
 			cin.clear();
 			cin.ignore();
@@ -163,44 +147,112 @@ void updateInventory() {
 	else { cout << "Your input itemID is not match with any items in cart.\n"; }
 }
 
-void addNewInventory() {
-	string designID, designName, itemID;
-	double quantity;
-	double price;
-	//bool isValidID = false;			//variable to check if input item ID is valid
+void addNewDesign() {
+	string designID, designName, itemID,updateDesignName ;
+	double quantity,updateQuantity;
+	double price, updatePrice;
+	bool isValidID = false;
 	viewInventory();
 	cout << "Enter the Design ID of item you want to add: \n";
-	cin >> designID;
-	cout << "Enter the Design Name of the item: \n";
-	cin >> designName;
-    cout << "Enter Initial Quantity: \n";
-    cin >> quantity;
-    cout << "Enter the Price of the item: \n";
-    cin >> price;
-    
-
+	cin >> itemID;
 	//Add new item to inventory
-	fstream newInventory;
-	newInventory.open("inventory.txt", newInventory.out | newInventory.app);
-    if(newInventory.is_open()){
-	newInventory << designID + " ";
-    newInventory << designName + " ";
-    newInventory << quantity;
-    newInventory << " ";
-    newInventory << price;
-	newInventory.close();
-}
-	
-	
+	ifstream checkItemID;
+	checkItemID.open("products.txt");
+	while (checkItemID >> designID >> designName >> price >> quantity) {
+		if (itemID == designID) isValidID = true;
+	}
+	checkItemID.close();
+	if (isValidID) {
+		cout << "This design is currently in our Inventory. The update process for inventory is activated.\n";
+		cout << "Enter the Price of the item: \n";
+		cin >> updatePrice;
+		cout << "Enter Number of item for this inventory: \n";
+		cin >> updateQuantity;
+		ifstream inFile;
+		inFile.open("products.txt");		//open "inventory.txt" in read mode
+		ofstream outFile;
+		outFile.open("newProducts.txt");	//create and open "newinventory.txt" in write mode to hold the temp values of cart
+
+	//Copy and update the info of items to "newinventory.txt"
+		while (inFile >> designID && inFile >> designName && inFile >> price && inFile >> quantity) {
+			if (designID == itemID) {
+				outFile << designID << "\t";
+				outFile << designName << "\t";
+				outFile << updatePrice << "\t";
+				quantity = quantity + updateQuantity;
+				outFile << quantity << endl;
+			}
+			else {
+				outFile << designID << "\t";
+				outFile << designName << "\t";
+				outFile << price << "\t";
+				outFile << quantity << endl;
+			}
+		}
+		inFile.close();
+		outFile.close();
+
+		//remove old cart file named "inventory.txt" and replace by "newinventory.txt". Then rename "newinventory.txt"
+		remove("products.txt");
+		if (rename("newProducts.txt", "products.txt") != 0) {
+			cout << "Inventory has not been updated\n";
+		}
+		else {
 			cin.clear();
 			cin.ignore();
 			system("CLS");
-			cout << "*************Inventory has been UPDATED***************\n";
+			cout << " Number of item and Price have been update\n";
 			viewInventory();
-		
+		}
 	}
+	else {
+		cin.clear();
+		cout << "Enter the Design Name of the item: \n";
+		cin >> updateDesignName;
+		cout << "Enter the Price of the item: \n";
+		cin >> updatePrice;
+		cout << "Enter Number of item for this inventory: \n";
+		cin >> updateQuantity;
+		ifstream inFile;
+		inFile.open("products.txt");		//open "inventory.txt" in read mode
+		ofstream outFile;
+		outFile.open("newProducts.txt");	//create and open "newinventory.txt" in write mode to hold the temp values of cart
 
-    void updateCurrency(double price){
+	//Copy and update the info of items to "newinventory.txt"
+		while (inFile >> designID && inFile >> designName && inFile >> price && inFile >> quantity) {
+			if (designID != itemID) {
+				outFile << designID << "\t";
+				outFile << designName << "\t";
+				outFile << price << "\t";
+				outFile << quantity << endl;
+			}
+		}
+		outFile << itemID << "\t";
+		outFile << updateDesignName << "\t";
+		outFile << updatePrice << "\t";
+		outFile << updateQuantity << endl;
+
+		inFile.close();
+		outFile.close();
+
+		//remove old cart file named "inventory.txt" and replace by "newinventory.txt". Then rename "newinventory.txt"
+		remove("products.txt");
+		if (rename("newProducts.txt", "products.txt") != 0) {
+			cout << "Inventory has not been updated\n";
+		}
+		else {
+			cin.clear();
+			cin.ignore();
+			system("CLS");
+			cout << "New Item has been added to Inventory\n";
+			viewInventory();
+		}
+	}
+}
+
+	
+
+	
+	
 
 
-    }

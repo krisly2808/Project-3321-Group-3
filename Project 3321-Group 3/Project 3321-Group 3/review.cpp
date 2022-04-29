@@ -1,4 +1,5 @@
 #include "reviews.h"
+#include "products.h"
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -31,32 +32,62 @@ void printReviews() {
 void updateReviews() {
     printReviews();
     string designID, name, price, review;
-    fstream oldReview, newReview;
-    oldReview.open("review.txt", ios::in);
+    fstream oldReview, newReview,myProduct;
+    double quantity;
+    bool inTheList = false;
     newReview.open("newreview.txt", ios::out);
+    myProduct.open("products.txt", ios::in);
     char option;
     cout << "Would you like to update the review for any product? Y/y\n";
     cin >> option;
     if (option == 'y' || option == 'Y') {
+        system("cls");
+        printReviews();
         string updateDesignID, updatedReview;
+        viewProducts();
         cout << "What is the design ID to review? \n";
         cin >> updateDesignID;
         cin.ignore();
         cin.clear();
         cout << "How many star you want to put for this review " << updateDesignID << "?\n";
         getline(cin, updatedReview);
+
+        //check if the item to review is in the reviews.txt
+        oldReview.open("review.txt", ios::in);
+        while (oldReview >> designID >> name >> price >> review) {
+            if (designID == updateDesignID) inTheList = true;
+        }
+        oldReview.close();
+
+        if (inTheList==false) {
+            oldReview.open("review.txt", ios::in);
+            while (oldReview >> designID >> name >> price >> review) {
+                newReview << designID << "\t" << name << "\t" << price << "\t" << review << endl;
+            }
+            oldReview.close();
+            while (myProduct >> designID >> name >> price >> quantity) {
+                if (designID == updateDesignID) {
+                    newReview << designID << "\t" << name << "\t" << price << "\t" << updatedReview << endl;
+                }
+            }
+        }
+        else {
+            oldReview.open("review.txt", ios::in);
         while (oldReview >> designID >> name >> price >> review) {
             if (updateDesignID == designID) {
                 newReview << designID << "\t" << name << "\t" << price << "\t" << review << endl;
                 newReview << designID << "\t" << name << "\t" << price << "\t" << updatedReview << endl;
             }
             else { newReview << designID << "\t" << name << "\t" << price << "\t" << review << endl; }
+        }}
+    }
+    else {
+        oldReview.open("review.txt", ios::in);
+        while (oldReview >> designID >> name >> price >> review) {
+            newReview << designID << "\t" << name << "\t" << price << "\t" << review << endl;
         }
     }
-    while (oldReview >> designID >> name >> price >> review) {
-        newReview << designID << "\t" << name << "\t" << price << "\t" << review << endl;
-    }
-    
+    myProduct.close();
     oldReview.close();
     newReview.close();
     system("cls");
@@ -66,7 +97,7 @@ void updateReviews() {
     }
     else {
         cin.clear();
-        cout << "Review is UPDATED\n";
+        cout << "Here is the reviews\n";
         printReviews();
     }
 }

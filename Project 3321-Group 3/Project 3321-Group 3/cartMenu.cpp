@@ -269,7 +269,7 @@ void updateQuantity() {
 	//Checking if input item ID is in the file -"cart.txt". Return true if valid
 	ifstream checkItemID;
 	checkItemID.open("cart.txt");
-	while (checkItemID >> designID && checkItemID >> designName && checkItemID >> quantity && checkItemID >> price) {
+	while (checkItemID >> designID  >> designName >> quantity  >> price) {
 		if (itemID == designID) isValidID = true;
 	}
 	checkItemID.close();
@@ -281,7 +281,7 @@ void updateQuantity() {
 	outFile.open("newCart.txt");	//create and open "newcart.txt" in write mode to hold the temp values of cart
 
 	//Copy and update the info of items to "newcart.txt"
-	while (inFile >> designID && inFile >> designName && inFile >> quantity && inFile >> price) {
+	while (inFile >> designID  >> designName >> quantity  >> price) {
 		if (designID == itemID) {
 			outFile << designID << "\t";
 			outFile << designName << "\t";
@@ -331,7 +331,7 @@ void addItem() {
 	//Checking if input item ID is in the file of items carried -"product.txt". Return true if valid
 	ifstream checkItemID;
 	checkItemID.open("products.txt");
-	while (checkItemID >> designID && checkItemID >> designName && checkItemID >> price) {
+	while (checkItemID >> designID>> designName >> price>>quantity) {
 		if (itemID == designID) isValidID = true;
 	}
 	checkItemID.close();
@@ -339,7 +339,7 @@ void addItem() {
 	//Checking if input item ID is in the cart -"cart.txt". Return true if valid
 	ifstream checkInCart;
 	checkInCart.open("cart.txt");
-	while (checkInCart >> designID && checkInCart >> designName&& checkInCart>>quantity&&checkInCart >> price) {
+	while (checkInCart >> designID  >> designName>>quantity >> price) {
 		if (itemID == designID) isInCart = true;
 	}
 	checkInCart.close();
@@ -354,7 +354,7 @@ void addItem() {
 		//Copy and update the info of items to "newcart.txt"
 		if (isInCart) {
 			//Update quantity if item is already in cart
-			while (inFile >> designID && inFile >> designName && inFile >> quantity && inFile >> price) {
+			while (inFile >> designID  >> designName  >> quantity  >> price) {
 				if (designID == itemID) {
 					outFile << designID << "\t";
 					outFile << designName << "\t";
@@ -375,13 +375,13 @@ void addItem() {
 			string tempID;
 			double tempQuantity;
 			inFileProduct.open("products.txt");
-			while (inFile >> designID && inFile >> designName && inFile >> quantity && inFile >> price) {
+			while (inFile >> designID >> designName >> quantity  >> price) {
 				outFile << designID << "\t";
 				outFile << designName << "\t";
 				outFile << quantity << "\t";
 				outFile << price << endl;
 			}
-			while (inFileProduct>>designID&& inFileProduct>>designName && inFileProduct >> price) {
+			while (inFileProduct>>designID>>designName >> price>>quantity) {
 				if (designID==itemID) {
 					outFile << designID << "\t";
 					outFile << designName << "\t";
