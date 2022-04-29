@@ -284,8 +284,6 @@ void getInfo() //this function is to obtain the details from the new user
 		cout << "Info has not been updated\n";
 	}
 	else {
-		
-		system("CLS");
 		cout << "*************Info has been UPDATED***************\n";
 	}
 
