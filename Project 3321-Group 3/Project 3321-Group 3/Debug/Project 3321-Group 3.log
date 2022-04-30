@@ -1,20 +1,2 @@
-﻿  AM.cpp
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\AM.cpp(7,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  cartMenu.cpp
-  checkOut.cpp
-  inventoryMenu.cpp
-  LoginMenu.cpp
-  mainMenu.cpp
-  orderMenu.cpp
-  Project 3321-Group 3.cpp
-  guestMenu.cpp
-  products.cpp
-  review.cpp
-  signup.cpp
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(73,22): warning C4129: '_': unrecognized character escape sequence
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(74,22): warning C4129: ' ': unrecognized character escape sequence
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(201,22): warning C4129: '_': unrecognized character escape sequence
-C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Project 3321-Group 3\signup.cpp(202,22): warning C4129: ' ': unrecognized character escape sequence
-  UserMenu.cpp
-  Generating Code...
+﻿  UserMenu.cpp
   Project 3321-Group 3.vcxproj -> C:\Users\chily\OneDrive - University of Houston Downtown\Desktop\Project-3321-Group-3\Project 3321-Group 3\Debug\Project 3321-Group 3.exe

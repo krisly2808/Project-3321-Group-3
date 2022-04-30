@@ -1,3 +1,4 @@
+//Amani Harrison
 #include "UserMenu.h"
 #include "reviews.h"
 #include "checkOut.h"
@@ -32,7 +33,6 @@ void printDetailsUserMenu(){
             printDetailCartMenu(choice2);
         break;
 
- 
         case 3: 
             updateReviews();
         break;
@@ -40,7 +40,6 @@ void printDetailsUserMenu(){
         case 4:
              memberCheckout();
             break;
-
 
         case 5:
             cin.clear();

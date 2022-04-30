@@ -1,3 +1,4 @@
+//Amani Harrison
 #include "inventoryMenu.h"
 #include <iostream>
 #include <string>

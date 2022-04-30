@@ -1,0 +1,11 @@
+
+Name:frank alfaro
+Address:1 main
+Credit card info: 1234567890123456
+Phone no: 8324444444
+=====================================================================
+|Design no|          Name            |     Quantity  |     Price     |
+=====================================================================
+   DS01	            TshirtXS		5		38.0365
+   DS06	           TShirtXLL		12		213.208
+	Total price is: 251.244 in CAD.

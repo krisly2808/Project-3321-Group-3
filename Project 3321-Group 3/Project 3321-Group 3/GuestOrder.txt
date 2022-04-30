@@ -1,0 +1,13 @@
+
+Name: Kris
+Address: 123 Main
+Credit Card: 1234567890233456
+Phone No: 8324444155
+=====================================================================
+|Design no|          Name            |     Quantity  |     Price     |
+=====================================================================
+   DS01	            TshirtXS		5		29.95
+   DS06	           TShirtXLL		12		167.88
+   DS07	           TShirtXXL		15		224.85
+   DS02	             TshirtS		10		79.9
+	Total price is: 502.58 in USD.
